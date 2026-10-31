@@ -63,14 +63,27 @@ export function Header({ active, theme }: { active: string; theme: string }) {
           <ul>
             {nav.map((item) => (
               <li key={item.id}>
-                <a
-                  href={`#${item.id}`}
-                  className={`header__link${item.id === 'contato' ? ' header__link--cta' : ''}`}
-                  aria-current={active === item.id ? 'true' : undefined}
-                >
-                  <span className="header__link-index">{item.index}</span>
-                  {item.label}
-                </a>
+                {item.id === 'contato' ? (
+                  <a
+                    href={contact.whatsapp}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="header__link header__link--cta"
+                  >
+                    <span className="header__link-index">{item.index}</span>
+                    {item.label}
+                    <span className="sr-only"> pelo WhatsApp (abre em nova aba)</span>
+                  </a>
+                ) : (
+                  <a
+                    href={`#${item.id}`}
+                    className="header__link"
+                    aria-current={active === item.id ? 'true' : undefined}
+                  >
+                    <span className="header__link-index">{item.index}</span>
+                    {item.label}
+                  </a>
+                )}
               </li>
             ))}
           </ul>
@@ -121,6 +134,9 @@ export function Header({ active, theme }: { active: string; theme: string }) {
               ))}
             </ol>
             <div className="menu__contact">
+              <a href={contact.whatsapp} target="_blank" rel="noopener noreferrer">
+                WhatsApp ↗
+              </a>
               <a href={`mailto:${contact.email}`}>{contact.email}</a>
               <a href={contact.linkedin} target="_blank" rel="noopener noreferrer">
                 LinkedIn ↗

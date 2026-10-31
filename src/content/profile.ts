@@ -21,9 +21,11 @@ export const contact = {
   email: 'yasmin.manasera@gmail.com',
   linkedin: 'https://www.linkedin.com/in/yasmin-manasera-57046216a/',
   linkedinLabel: 'in/yasmin-manasera',
-  /** Exibido como telefone. Não converter em link de WhatsApp sem confirmação. */
   phoneDisplay: '+55 (92) 98117-1723',
   phoneHref: 'tel:+5592981171723',
+  /** WhatsApp confirmado, com mensagem inicial pronta */
+  whatsapp:
+    'https://wa.me/5592981171723?text=Ol%C3%A1%20Yasmin%2C%20vi%20seu%20site%20e%20gostaria%20de%20entrar%20em%20contato.',
 }
 
 export const nav = [

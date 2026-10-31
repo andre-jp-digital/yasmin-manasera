@@ -54,6 +54,12 @@ export function Contact() {
               <button type="button" className="contact__copy" onClick={copy} aria-live="polite">
                 {copied ? 'E-mail copiado ✓' : 'Copiar e-mail'}
               </button>
+              <a className="contact__whatsapp" href={contact.whatsapp} target="_blank" rel="noopener noreferrer">
+                <span className="contact__whatsapp-dot" aria-hidden="true" />
+                Conversar no WhatsApp
+                <Arrow size={20} />
+                <span className="sr-only"> (abre em nova aba)</span>
+              </a>
             </Reveal>
           </div>
 
@@ -70,8 +76,11 @@ export function Contact() {
               </a>
             </li>
             <li>
-              <span className="contact__k">Telefone</span>
-              <a href={contact.phoneHref}>{contact.phoneDisplay}</a>
+              <span className="contact__k">WhatsApp</span>
+              <a href={contact.whatsapp} target="_blank" rel="noopener noreferrer">
+                {contact.phoneDisplay} <span aria-hidden="true">↗</span>
+                <span className="sr-only"> (abre em nova aba)</span>
+              </a>
             </li>
           </ul>
         </div>

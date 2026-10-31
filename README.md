@@ -112,8 +112,9 @@ Para editar textos, mexa só em `src/content/profile.ts`.
 
 Todas as informações profissionais vêm do currículo. **Não** há clientes,
 números, resultados, depoimentos, logotipos ou certificações inventados. O
-telefone usa `tel:` e **não** é convertido em WhatsApp. Não há formulário de
-contato falso.
+WhatsApp (confirmado) abre com mensagem pronta, a partir do botão "Contato"
+do menu, do menu mobile e da seção de Contato. Não há formulário de contato
+falso.
 
 ## O que ainda precisa ser fornecido ou confirmado
 
