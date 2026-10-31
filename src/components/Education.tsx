@@ -102,7 +102,7 @@ export function Education() {
                 aria-hidden="true"
                 initial={{ opacity: 0, scale: 0.85 }}
                 animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
+                exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.2 } }}
                 transition={{ duration: 0.5, ease, delay: 0.45 }}
               >
                 marca
@@ -153,7 +153,7 @@ export function Education() {
                   key="result"
                   initial={{ opacity: 0, y: 24 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -12 }}
+                  exit={{ opacity: 0, y: -12, transition: { duration: 0.25 } }}
                   transition={{ duration: 0.6, ease, delay: 0.35 }}
                 >
                   <p className="venn__result-text">{education.result}</p>
