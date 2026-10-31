@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://yasminmanasera.com.br/sitemap.xml
+Sitemap: https://www.yasminmanasera.com.br/sitemap.xml

@@ -151,7 +151,8 @@ falso.
 
 ## Domínio
 
-Domínio oficial: **https://yasminmanasera.com.br** (link canônico, Open Graph,
+Domínio oficial: **https://www.yasminmanasera.com.br** (o endereço sem www
+redireciona para ele com 308). Link canônico, Open Graph,
 `robots.txt` e `sitemap.xml` já apontam para ele). Imagem de compartilhamento:
 `public/og-image.jpg` (1200×630), gerada a partir da hero.
 
