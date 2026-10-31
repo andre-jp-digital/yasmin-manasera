@@ -98,6 +98,8 @@ async function newPage(opts = {}) {
     linkedin: [...document.querySelectorAll('a[href*="linkedin.com"]')].map((a) => [a.getAttribute('href'), a.target, a.rel]),
     tel: [...document.querySelectorAll('a[href^="tel:"]')].map((a) => a.getAttribute('href')),
     waLinks: [...document.querySelectorAll('a[href*="wa.me"]')].map((a) => [a.getAttribute('href'), a.target]),
+    heroCta: document.querySelector('.hero__ctas .btn--ghost')?.getAttribute('href'),
+    waHref: 'https://wa.me/5592981171723?text=Ol%C3%A1%20Yasmin%2C%20vi%20seu%20site%20e%20gostaria%20de%20entrar%20em%20contato.',
     forms: document.querySelectorAll('form').length,
     imgsNoAlt: [...document.querySelectorAll('img')].filter((i) => !i.getAttribute('alt')).length,
     lazyHero: document.querySelector('.stage__photo')?.getAttribute('loading'),
@@ -105,6 +107,7 @@ async function newPage(opts = {}) {
     sectionIds: [...document.querySelectorAll('main section[id]')].map((s) => s.id),
     navTargetsOk: [...document.querySelectorAll('a[href^="#"]')].every((a) => !!document.getElementById(a.getAttribute('href').slice(1))),
   }))
+  check('botão "Vamos conversar" da hero abre o WhatsApp', data.heroCta === data.waHref, data.heroCta)
   check('um único h1', data.h1 === 1, String(data.h1))
   check('mailto correto', data.mailto.length > 0 && data.mailto.every((h) => h === 'mailto:yasmin.manasera@gmail.com'))
   check(
@@ -112,7 +115,7 @@ async function newPage(opts = {}) {
     data.linkedin.length > 0 &&
       data.linkedin.every(([h, t, r]) => h === 'https://www.linkedin.com/in/yasmin-manasera-57046216a/' && t === '_blank' && r.includes('noopener')),
   )
-  check('WhatsApp com o link e a mensagem corretos (nova aba)', data.waLinks.length >= 3 && data.waLinks.every(([h, t]) => h === 'https://wa.me/5592981171723?text=Ol%C3%A1%20Yasmin%2C%20vi%20seu%20site%20e%20gostaria%20de%20entrar%20em%20contato.' && t === '_blank'), JSON.stringify(data.waLinks.length))
+  check('WhatsApp com o link e a mensagem corretos (nova aba)', data.waLinks.length >= 4 && data.waLinks.every(([h, t]) => h === 'https://wa.me/5592981171723?text=Ol%C3%A1%20Yasmin%2C%20vi%20seu%20site%20e%20gostaria%20de%20entrar%20em%20contato.' && t === '_blank'), JSON.stringify(data.waLinks.length))
   check('sem formulários falsos', data.forms === 0)
   check('todas as imagens com alt', data.imgsNoAlt === 0)
   check('foto principal sem lazy loading', data.lazyHero !== 'lazy')

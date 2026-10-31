@@ -1,6 +1,6 @@
 import { motion, useMotionValue, useReducedMotion, useSpring, useTransform, type MotionValue } from 'motion/react'
 import { useEffect, useRef, type ReactNode } from 'react'
-import { hero, images, person } from '../content/profile'
+import { contact, hero, images, person } from '../content/profile'
 import { useIntro } from '../hooks/IntroContext'
 import { useFinePointer } from '../hooks/useMediaQuery'
 import { Arrow } from './ui/Arrow'
@@ -241,8 +241,9 @@ export function Hero() {
           <a className="btn btn--primary" href="#trajetoria">
             {hero.ctaPrimary} <Arrow dir="down" />
           </a>
-          <a className="btn btn--ghost" href="#contato">
+          <a className="btn btn--ghost" href={contact.whatsapp} target="_blank" rel="noopener noreferrer">
             {hero.ctaSecondary} <Arrow />
+            <span className="sr-only"> pelo WhatsApp (abre em nova aba)</span>
           </a>
         </motion.div>
       </div>
