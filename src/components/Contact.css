@@ -159,32 +159,44 @@
 .footer__mono {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  gap: clamp(0.5rem, 2vw, 2rem);
   margin: 0 -0.04em 0.15em;
+  user-select: none;
+}
+.footer__letter {
+  flex: none;
   font-size: clamp(9rem, 34vw, 34rem);
   line-height: 0.75;
   letter-spacing: -0.06em;
-  user-select: none;
 }
-.footer__mono span:first-child {
+.footer__letter:first-child {
   color: transparent;
   -webkit-text-stroke: 1.5px rgba(242, 239, 233, 0.4);
 }
-.footer__mono span:last-child {
+.footer__letter:last-child {
   color: var(--signal);
+}
+/* "Prazer em conhecer" em árabe, entre as iniciais */
+.footer__arabic {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-family: 'Amiri', var(--font-serif);
+  font-size: clamp(1.7rem, 0.6rem + 4.4vw, 6rem);
+  line-height: 1.5;
+  text-align: center;
+  color: var(--paper);
+  text-wrap: balance;
 }
 .footer__row {
   position: relative;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: flex-end;
   gap: 1.5rem;
   padding: 2rem 0;
   border-top: 1px solid var(--line-on-ink);
-}
-.footer__signoff {
-  font-size: clamp(2rem, 1.2rem + 3vw, 3.8rem);
-  line-height: 1;
 }
 .footer__actions {
   display: flex;

@@ -7,10 +7,9 @@ import './Career.css'
 
 const ease = [0.22, 1, 0.36, 1] as const
 
-function Chapter({ data, current }: { data: CareerChapter; current?: boolean }) {
-  const isNow = data.yearsEnd === 'hoje'
+function Chapter({ data, latest }: { data: CareerChapter; latest?: boolean }) {
   return (
-    <article className={`chapter${current ? ' chapter--current' : ''}`} aria-labelledby={`ch-${data.yearsStart}`}>
+    <article className={`chapter${latest ? ' chapter--latest' : ''}`} aria-labelledby={`ch-${data.yearsStart}`}>
       <div className="chapter__years" aria-hidden="true">
         <div className="chapter__years-inner">
           <motion.span
@@ -24,7 +23,7 @@ function Chapter({ data, current }: { data: CareerChapter; current?: boolean }) 
           </motion.span>
           <span className="chapter__year-rule" />
           <motion.span
-            className={`chapter__year chapter__year--end${isNow ? ' is-now' : ''}`}
+            className="chapter__year chapter__year--end"
             initial={{ y: '40%', opacity: 0 }}
             whileInView={{ y: '0%', opacity: 1 }}
             viewport={{ once: true }}
@@ -41,11 +40,6 @@ function Chapter({ data, current }: { data: CareerChapter; current?: boolean }) 
             <span>{data.chapter}</span>
             <span aria-hidden="true">·</span>
             <span>{data.theme}</span>
-            {current && (
-              <span className="chapter__now">
-                <i aria-hidden="true" /> Atual
-              </span>
-            )}
           </p>
           <h3 id={`ch-${data.yearsStart}`} className="chapter__company">
             {data.company}
@@ -134,7 +128,7 @@ export function Career() {
       </div>
 
       <div className="container">
-        <Chapter data={second} current />
+        <Chapter data={second} latest />
       </div>
     </section>
   )

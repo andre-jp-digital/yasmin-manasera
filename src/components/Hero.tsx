@@ -249,12 +249,8 @@ export function Hero() {
 
         <Depth x={sx} y={sy} depth={5} className="stage__layer stage__layer--tags">
           <div className="fig">
-            <motion.span className="stage__tag stage__tag--role" {...enter(0.5, { x: -30 })}>
-              <span className="stage__tag-dot" />
-              {hero.tags[0]}
-            </motion.span>
             <motion.span className="stage__tag stage__tag--edu" {...enter(0.62, { x: 30 })}>
-              {hero.tags[1]}
+              {hero.tags[0]}
             </motion.span>
           </div>
         </Depth>

@@ -117,8 +117,8 @@ async function newPage(opts = {}) {
   check('todas as imagens com alt', data.imgsNoAlt === 0)
   check('foto principal sem lazy loading', data.lazyHero !== 'lazy')
   check('âncoras internas apontam para seções existentes', data.navTargetsOk)
-  for (const t of ['V4 Company', 'Account Manager', 'Grupo Maxma Modas', 'Gerente de Vendas', 'MBA em Gestão Empresarial', 'FGV', 'Wyden', 'Publicidade e Propaganda'])
-    check(`conteúdo: "${t}"`, data.text.includes(t))
+  for (const t of ['V4 Company', 'Account Manager', 'B2B e B2C', 'out. 2026', 'تشرفت بمعرفتك', 'Grupo Maxma Modas', 'Gerente de Vendas', 'MBA em Gestão Empresarial', 'FGV', 'Wyden', 'Publicidade e Propaganda'])
+    check(`conteúdo: "${t}"`, data.text.toLowerCase().includes(t.toLowerCase()))
   check('ordem das seções', data.sectionIds.join(',') === 'inicio,pensamento,trajetoria,atuacao,formacao,fora-do-roteiro,contato', data.sectionIds.join(','))
 
   // Verbos: clique troca o painel

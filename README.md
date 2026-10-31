@@ -115,8 +115,9 @@ contato falso.
    visíveis: rio Tibre, cúpula de São Pedro, Castel e Ponte Sant'Angelo.
    Confirmar, e enviar outros países e fotos se quiser ampliar a seção
    (`travel.photos` em `profile.ts`).
-2. **Texto pessoal da seção "Fora do roteiro".** Validar com a Yasmin se a
-   frase sobre viagens a representa.
+2. **Assinatura em árabe no rodapé.** "Prazer em conhecer" está como
+   «تشرفت بمعرفتك» (fonte Amiri). Vale uma revisão por um falante nativo,
+   se possível.
 3. **Fotografia editorial dedicada (opcional, recomendado).** O hero usa o
    retrato de estúdio fornecido, recortado com IA (BiRefNet, rodando
    localmente) e tratado em P&B. Um ensaio feito para o site ampliaria as

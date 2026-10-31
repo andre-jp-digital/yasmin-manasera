@@ -78,12 +78,22 @@ export function Contact() {
       </section>
 
       <footer className="footer" data-theme-zone="dark">
-        <div className="footer__mono serif" aria-hidden="true">
-          <span>Y</span>
-          <span>M</span>
+        <div className="footer__mono">
+          <span className="footer__letter serif" aria-hidden="true">
+            Y
+          </span>
+          <p className="footer__arabic" lang="ar" dir="rtl" title={closing.signoffTranslation}>
+            {closing.signoffArabic}
+            <span className="sr-only" lang="pt-BR" dir="ltr">
+              {' '}
+              ({closing.signoffTranslation})
+            </span>
+          </p>
+          <span className="footer__letter serif" aria-hidden="true">
+            M
+          </span>
         </div>
         <div className="footer__row">
-          <p className="footer__signoff serif-accent">{closing.signoff}</p>
           <div className="footer__actions">
             <button type="button" onClick={replay}>
               Rever a apresentação <span aria-hidden="true">↺</span>

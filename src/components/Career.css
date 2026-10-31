@@ -46,16 +46,6 @@
   color: transparent;
   -webkit-text-stroke: 1.5px var(--ink);
 }
-.chapter__year--end.is-now {
-  color: var(--signal);
-  -webkit-text-stroke: 0;
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-weight: 400;
-  font-stretch: 100%;
-  letter-spacing: -0.03em;
-  line-height: 0.9;
-}
 .chapter__year-rule {
   display: block;
   width: clamp(3rem, 6vw, 5.5rem);
@@ -74,28 +64,6 @@
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--gray);
-}
-.chapter__now {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  margin-left: 0.35rem;
-  padding: 0.3rem 0.6rem;
-  background: var(--ink);
-  color: var(--paper);
-  letter-spacing: 0.12em;
-}
-.chapter__now i {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--signal);
-  animation: now-blink 1.6s ease-in-out infinite;
-}
-@keyframes now-blink {
-  50% {
-    opacity: 0.25;
-  }
 }
 .chapter__company {
   margin-top: 1rem;
@@ -211,7 +179,7 @@
   height: 6px;
   background: var(--ink);
 }
-.chapter--current .chapter__group li::before {
+.chapter--latest .chapter__group li::before {
   background: var(--signal);
 }
 

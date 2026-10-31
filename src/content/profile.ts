@@ -15,8 +15,6 @@ export const person = {
   firstName: 'Yasmin',
   lastName: 'Manasera',
   fullName: 'Yasmin Manasera',
-  currentRole: 'Account Manager',
-  currentCompany: 'V4 Company',
 }
 
 export const contact = {
@@ -55,7 +53,7 @@ export const hero = {
     'Diagnóstico de negócios, estratégia comercial e marketing orientado a resultado — do entendimento do problema ao acompanhamento da execução.',
   ctaPrimary: 'Conhecer a trajetória',
   ctaSecondary: 'Vamos conversar',
-  tags: ['Account Manager · V4 Company', 'MBA · FGV', 'Publicidade & Propaganda'],
+  tags: ['MBA · FGV'],
 }
 
 export const ticker = [
@@ -64,7 +62,7 @@ export const ticker = [
   'Estratégia comercial',
   'Gestão de contas',
   'Gestão de projetos',
-  'Vendas B2B',
+  'Vendas B2B e B2C',
   'Comunicação & campanhas',
 ]
 
@@ -73,7 +71,7 @@ export const thinking = {
   titleLead: 'Antes de encontrar a resposta, é preciso entender',
   titleAccent: 'a pergunta.',
   lead:
-    'Minha experiência foi construída em ambientes que exigiam ler cenários, analisar informações, identificar problemas e organizar ações — do varejo à liderança de equipes, das vendas B2B à gestão de contas, projetos e consultoria.',
+    'Minha experiência foi construída em ambientes que exigiam ler cenários, analisar informações, identificar problemas e organizar ações — do varejo à liderança de equipes, das vendas B2B e B2C à gestão de contas, projetos e consultoria.',
   questionsIntro: 'Por isso, antes de propor uma solução, procuro entender o negócio por inteiro:',
   questions: [
     'O que a empresa vende — e para quem?',
@@ -153,10 +151,10 @@ export const career = {
       chapter: 'Capítulo 02',
       theme: 'Estratégia, contas e consultoria',
       yearsStart: '2022',
-      yearsEnd: 'hoje',
+      yearsEnd: '2026',
       company: 'V4 Company',
       role: 'Account Manager',
-      period: 'ago. 2022 — atual',
+      period: 'ago. 2022 — out. 2026',
       progression: ['Gestão estratégica de contas e projetos', 'Consultoria e diagnóstico de negócios'],
       summary:
         'A atuação começou na gestão estratégica de contas e projetos e evoluiu para consultoria e diagnóstico de negócios: analisar o negócio por inteiro, encontrar gargalos e transformar o diagnóstico em estratégia.',
@@ -217,8 +215,8 @@ export const contribution = {
     {
       title: 'Estratégia comercial',
       short: 'Comercial',
-      text: 'Vendas B2B, vendas consultivas, qualificação de oportunidades, negociação, gestão de pipeline e acompanhamento de indicadores.',
-      keywords: ['Vendas B2B', 'Venda consultiva', 'Qualificação', 'Negociação', 'Pipeline', 'Indicadores'],
+      text: 'Vendas B2B e B2C, vendas consultivas, qualificação de oportunidades, negociação, gestão de pipeline e acompanhamento de indicadores.',
+      keywords: ['Vendas B2B e B2C', 'Venda consultiva', 'Qualificação', 'Negociação', 'Pipeline', 'Indicadores'],
     },
     {
       title: 'Gestão de projetos e execução',
@@ -260,7 +258,7 @@ export const education = {
 export const travel = {
   eyebrow: 'Fora do roteiro',
   title: 'Nem tudo cabe em um currículo.',
-  text: 'Fora do trabalho, viajar é um jeito de manter a curiosidade em movimento: outros lugares, outros ritmos, outras formas de viver a cidade. Alguns registros pessoais.',
+  text: 'Fora do trabalho, viajar é um jeito de manter a curiosidade em movimento: outros lugares, outros ritmos, outras formas de se comunicar e vender.',
   photos: [
     {
       src: imgTibre,
@@ -283,7 +281,9 @@ export const closing = {
   titleB: 'merecem sair',
   titleC: 'do papel.',
   text: 'Diagnóstico, estratégia e execução funcionam melhor quando começam com uma boa conversa. Se existe um desafio de negócio na mesa, vamos conversar sobre o que pode ser construído.',
-  signoff: 'Prazer em conhecer.',
+  /** "Prazer em conhecer" em árabe, exibido entre as letras Y e M do rodapé. */
+  signoffArabic: 'تشرفت بمعرفتك',
+  signoffTranslation: 'Prazer em conhecer.',
 }
 
 export const images = {

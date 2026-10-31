@@ -30,7 +30,7 @@ export function Travel() {
           </Reveal>
           <Reveal delay={0.2}>
             <p className="travel__note">
-              <i aria-hidden="true" /> Registros pessoais — não se referem a experiências profissionais.
+              <i aria-hidden="true" /> Registros pessoais.
             </p>
           </Reveal>
         </div>
