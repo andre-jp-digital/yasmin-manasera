@@ -137,8 +137,7 @@ falso.
    documentados.
 5. **Imagem de compartilhamento (og:image).** Precisa da URL final do domínio.
    Recomendado: 1200×630 com a composição da hero.
-6. **WhatsApp (opcional).** Só adicionar se ela confirmar que o número usa o
-   serviço.
+
 
 ## Trocar ou adicionar fotos
 
