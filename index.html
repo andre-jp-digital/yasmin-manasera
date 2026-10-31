@@ -12,6 +12,13 @@
     <meta property="og:description" content="Estratégia, marketing e vendas para transformar desafios de negócio em planos de ação." />
     <meta property="og:locale" content="pt_BR" />
     <script>
+      /* Paleta: ?paleta=original mostra a paleta anterior (vermelho-sinal) para comparação. */
+      try {
+        var pal = new URLSearchParams(location.search).get('paleta');
+        if (pal === 'original') document.documentElement.setAttribute('data-palette', 'original');
+      } catch (e) {}
+    </script>
+    <script>
       /* Evita "flash" da home antes da abertura: decide o estado inicial antes do React. */
       try {
         var seen = sessionStorage.getItem('ym:intro-seen') === '1';

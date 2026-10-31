@@ -25,7 +25,7 @@
 }
 .header[data-theme='signal'] {
   --fg: var(--ink);
-  --bg: rgba(255, 75, 35, 0.92);
+  --bg: rgba(var(--signal-rgb), 0.92);
 }
 .header.is-scrolled {
   background: var(--bg);

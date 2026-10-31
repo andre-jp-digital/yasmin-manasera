@@ -13,9 +13,13 @@
   --ink-3: #2b2a28;
   --gray: #6b6862;       /* texto secundário sobre papel (AA) */
   --gray-on-ink: #a6a29b; /* texto secundário sobre tinta (AA) */
-  --signal: #ff4b23;     /* cor principal */
-  --signal-deep: #e2380f;
-  --blush: #f3c6b3;      /* cor secundária */
+  /* Paleta "referência" (padrão): rosa-carmim + pêssego — cores medidas na
+     referência visual. A paleta original fica em [data-palette='original']. */
+  --signal: #f12150;     /* cor principal: rosa-carmim */
+  --signal-rgb: 241, 33, 80;
+  --signal-deep: #cf1240;
+  --blush: #f6beaf;      /* cor secundária: pêssego */
+  --blush-rgb: 246, 190, 175;
   --line: rgba(18, 18, 18, 0.14);
   --line-strong: rgba(18, 18, 18, 0.85);
   --line-on-ink: rgba(242, 239, 233, 0.16);
@@ -48,6 +52,15 @@
   /* Bordas e sombras gráficas (eco neobrutalista, contido) */
   --stroke: 1.5px solid var(--ink);
   --shadow-hard: 6px 6px 0 var(--ink);
+}
+
+/* Paleta original (vermelho-sinal + blush) — acessível com ?paleta=original */
+:root[data-palette='original'] {
+  --signal: #ff4b23;
+  --signal-rgb: 255, 75, 35;
+  --signal-deep: #e2380f;
+  --blush: #f3c6b3;
+  --blush-rgb: 243, 198, 179;
 }
 
 @media (min-width: 1100px) {

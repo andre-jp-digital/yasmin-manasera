@@ -64,9 +64,12 @@ Para editar textos, mexa só em `src/content/profile.ts`.
 - **Conceito:** "Prazer" como gesto de apresentação. O visitante diz
   "prazer" e o nome se completa como resposta. Depois, nome e iniciais
   viajam até a home.
-- **Paleta:** papel `#F2EFE9`, tinta `#121212`, cinza quente, um
-  **vermelho-sinal `#FF4B23`** (interação, destaque, pontos de atenção) e
-  **blush `#F3C6B3`** como apoio de colagem.
+- **Paleta:** papel `#F2EFE9`, tinta `#121212`, cinza quente, **rosa-carmim
+  `#F12150`** como cor principal (interação, destaque) e **pêssego `#F6BEAF`**
+  como apoio, com as cores medidas na referência visual. A paleta anterior
+  (vermelho-sinal `#FF4B23` + blush `#F3C6B3`) continua disponível para
+  comparação com `?paleta=original` no fim do link. As cores ficam em
+  `src/styles/tokens.css`.
 - **Tipografia:** Archivo variável (peso 100–900 e largura 62–125%) para
   títulos e texto. Instrument Serif para as iniciais e os acentos editoriais.
   As duas são servidas localmente via Fontsource.
