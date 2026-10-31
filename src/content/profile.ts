@@ -1,0 +1,297 @@
+import imgHero1100 from '../assets/images/yasmin/yasmin-hero-recorte-pb-1100.webp'
+import imgHero640 from '../assets/images/yasmin/yasmin-hero-recorte-pb-640.webp'
+import imgTibre from '../assets/images/yasmin/viagem-roma-tibre.webp'
+import imgCastel from '../assets/images/yasmin/viagem-roma-castel-santangelo.webp'
+
+/**
+ * Conteúdo do site — fonte única.
+ *
+ * Todas as informações profissionais vêm do currículo de Yasmin Manasera.
+ * Regra do projeto: não adicionar clientes, números, resultados, cargos,
+ * certificações ou depoimentos que não estejam documentados.
+ */
+
+export const person = {
+  firstName: 'Yasmin',
+  lastName: 'Manasera',
+  fullName: 'Yasmin Manasera',
+  currentRole: 'Account Manager',
+  currentCompany: 'V4 Company',
+}
+
+export const contact = {
+  email: 'yasmin.manasera@gmail.com',
+  linkedin: 'https://www.linkedin.com/in/yasmin-manasera-57046216a/',
+  linkedinLabel: 'in/yasmin-manasera',
+  /** Exibido como telefone. Não converter em link de WhatsApp sem confirmação. */
+  phoneDisplay: '+55 (92) 98117-1723',
+  phoneHref: 'tel:+5592981171723',
+}
+
+export const nav = [
+  { id: 'pensamento', label: 'Pensamento', index: '01' },
+  { id: 'trajetoria', label: 'Trajetória', index: '02' },
+  { id: 'atuacao', label: 'Atuação', index: '03' },
+  { id: 'formacao', label: 'Formação', index: '04' },
+  { id: 'contato', label: 'Contato', index: '06' },
+] as const
+
+/** Todas as seções (usado pelo índice lateral). */
+export const sections = [
+  { id: 'inicio', label: 'Prazer', index: '00' },
+  { id: 'pensamento', label: 'Pensamento', index: '01' },
+  { id: 'trajetoria', label: 'Trajetória', index: '02' },
+  { id: 'atuacao', label: 'Atuação', index: '03' },
+  { id: 'formacao', label: 'Formação', index: '04' },
+  { id: 'fora-do-roteiro', label: 'Fora do roteiro', index: '05' },
+  { id: 'contato', label: 'Contato', index: '06' },
+] as const
+
+export const hero = {
+  overline: 'Prazer, eu sou',
+  statementLead: 'Conecto estratégia, marketing e vendas para transformar desafios de negócio em',
+  statementAccent: 'planos de ação.',
+  description:
+    'Diagnóstico de negócios, estratégia comercial e marketing orientado a resultado — do entendimento do problema ao acompanhamento da execução.',
+  ctaPrimary: 'Conhecer a trajetória',
+  ctaSecondary: 'Vamos conversar',
+  tags: ['Account Manager · V4 Company', 'MBA · FGV', 'Publicidade & Propaganda'],
+}
+
+export const ticker = [
+  'Diagnóstico de negócios',
+  'Estratégia de marketing',
+  'Estratégia comercial',
+  'Gestão de contas',
+  'Gestão de projetos',
+  'Vendas B2B',
+  'Comunicação & campanhas',
+]
+
+export const thinking = {
+  eyebrow: 'Maneira de pensar',
+  titleLead: 'Antes de encontrar a resposta, é preciso entender',
+  titleAccent: 'a pergunta.',
+  lead:
+    'Minha experiência foi construída em ambientes que exigiam ler cenários, analisar informações, identificar problemas e organizar ações — do varejo à liderança de equipes, das vendas B2B à gestão de contas, projetos e consultoria.',
+  questionsIntro: 'Por isso, antes de propor uma solução, procuro entender o negócio por inteiro:',
+  questions: [
+    'O que a empresa vende — e para quem?',
+    'Como ela atrai clientes?',
+    'Como as equipes executam?',
+    'Onde as oportunidades se perdem?',
+    'O que, de fato, está impedindo o resultado?',
+  ],
+  closing: 'Marketing, vendas e operação não funcionam isoladamente. A estratégia também não deveria.',
+  verbs: [
+    {
+      word: 'Diagnosticar',
+      text: 'Olhar marketing, vendas, operação e retenção em conjunto para localizar onde está o gargalo — e não apenas o sintoma.',
+    },
+    {
+      word: 'Questionar',
+      text: 'Antes de propor uma solução, entender o que está impedindo o resultado. A pergunta certa evita esforço na direção errada.',
+    },
+    {
+      word: 'Estruturar',
+      text: 'Transformar o diagnóstico em prioridades, estratégia e um plano de ação que as equipes conseguem executar.',
+    },
+    {
+      word: 'Executar',
+      text: 'Coordenar especialidades, acompanhar indicadores e ajustar a rota. Estratégia que não chega à execução é só apresentação.',
+    },
+  ],
+}
+
+export type CareerGroup = { title: string; items: string[] }
+export type CareerChapter = {
+  chapter: string
+  theme: string
+  yearsStart: string
+  yearsEnd: string
+  company: string
+  role: string
+  period: string
+  /** Evolução de atuação dentro da empresa (somente quando documentada). */
+  progression?: string[]
+  summary: string
+  groups: CareerGroup[]
+}
+
+export const career = {
+  eyebrow: 'Trajetória',
+  title: 'Experiência construída entre estratégia e execução.',
+  intro:
+    'Duas etapas, uma mesma lógica: entender o que move o resultado e organizar pessoas, prioridades e indicadores em torno disso.',
+  chapters: [
+    {
+      chapter: 'Capítulo 01',
+      theme: 'Varejo e liderança comercial',
+      yearsStart: '2015',
+      yearsEnd: '2020',
+      company: 'Grupo Maxma Modas',
+      role: 'Gerente de Vendas',
+      period: 'ago. 2015 — jul. 2020',
+      summary:
+        'Cinco anos à frente de equipes comerciais, com responsabilidade sobre metas, operação e experiência do cliente — o lugar onde a estratégia precisa funcionar no dia a dia, diante do cliente.',
+      groups: [
+        {
+          title: 'Pessoas',
+          items: ['Gestão e desenvolvimento de equipes comerciais', 'Tomada de decisão e resolução de problemas'],
+        },
+        {
+          title: 'Resultado',
+          items: ['Acompanhamento de metas e indicadores', 'Estratégias de vendas'],
+        },
+        {
+          title: 'Operação',
+          items: ['Gestão operacional', 'Experiência do cliente'],
+        },
+      ],
+    },
+    {
+      chapter: 'Capítulo 02',
+      theme: 'Estratégia, contas e consultoria',
+      yearsStart: '2022',
+      yearsEnd: 'hoje',
+      company: 'V4 Company',
+      role: 'Account Manager',
+      period: 'ago. 2022 — atual',
+      progression: ['Gestão estratégica de contas e projetos', 'Consultoria e diagnóstico de negócios'],
+      summary:
+        'A atuação começou na gestão estratégica de contas e projetos e evoluiu para consultoria e diagnóstico de negócios: analisar o negócio por inteiro, encontrar gargalos e transformar o diagnóstico em estratégia.',
+      groups: [
+        {
+          title: 'Diagnóstico',
+          items: [
+            'Diagnóstico de negócios',
+            'Análise de marketing, vendas, operação e retenção',
+            'Auditorias para identificação de gargalos e oportunidades',
+          ],
+        },
+        {
+          title: 'Estratégia',
+          items: [
+            'Estruturação de estratégias e planos de ação',
+            'Desenvolvimento de estratégias de comunicação e campanhas',
+            'Apresentação de estratégias aos clientes',
+          ],
+        },
+        {
+          title: 'Gestão',
+          items: [
+            'Gestão de contas e projetos',
+            'Coordenação de equipes de tráfego, copy, design e tecnologia',
+            'Acompanhamento de indicadores e resultados',
+            'Relacionamento com clientes',
+          ],
+        },
+      ],
+    },
+  ] satisfies CareerChapter[],
+  bridge: {
+    lead: 'O que a liderança comercial ensinou,',
+    accent: 'a consultoria aproveita.',
+    text: 'Metas, indicadores, equipes e cliente deixaram de ser teoria muito antes de virarem estratégia.',
+  },
+}
+
+export const contribution = {
+  eyebrow: 'Como posso contribuir',
+  title: 'Entender o negócio muda a maneira de construir a estratégia.',
+  intro:
+    'Quatro frentes que se conectam — porque o problema de um negócio raramente respeita a fronteira entre áreas.',
+  areas: [
+    {
+      title: 'Diagnóstico de negócios',
+      short: 'Diagnóstico',
+      text: 'Análise de marketing, vendas, operação e retenção para identificar gargalos, causas de problemas e oportunidades.',
+      keywords: ['Marketing', 'Vendas', 'Operação', 'Retenção', 'Auditorias'],
+    },
+    {
+      title: 'Estratégia de marketing e comunicação',
+      short: 'Marketing',
+      text: 'Estruturação de estratégias de comunicação e campanhas, considerando os objetivos e desafios de cada negócio.',
+      keywords: ['Estratégia de comunicação', 'Campanhas', 'Objetivos de negócio'],
+    },
+    {
+      title: 'Estratégia comercial',
+      short: 'Comercial',
+      text: 'Vendas B2B, vendas consultivas, qualificação de oportunidades, negociação, gestão de pipeline e acompanhamento de indicadores.',
+      keywords: ['Vendas B2B', 'Venda consultiva', 'Qualificação', 'Negociação', 'Pipeline', 'Indicadores'],
+    },
+    {
+      title: 'Gestão de projetos e execução',
+      short: 'Execução',
+      text: 'Organização de prioridades, coordenação de diferentes especialidades, gestão de contas e acompanhamento das iniciativas definidas.',
+      keywords: ['Prioridades', 'Coordenação multidisciplinar', 'Gestão de contas', 'Acompanhamento'],
+    },
+  ],
+}
+
+export const education = {
+  eyebrow: 'Formação',
+  titleLead: 'A linguagem da comunicação.',
+  titleAccent: 'A lógica da gestão.',
+  items: [
+    {
+      word: 'Comunicação',
+      degree: 'Comunicação Social — Publicidade e Propaganda',
+      institution: 'Wyden',
+      note: 'Graduação',
+    },
+    {
+      word: 'Gestão',
+      degree: 'MBA em Gestão Empresarial',
+      institution: 'FGV',
+      note: 'MBA',
+    },
+  ],
+  result: 'marca e negócio na mesma conversa.',
+  text: 'A formação em publicidade ensina a falar com pessoas. A gestão ensina a responder ao negócio. A prática comercial ensinou que as duas coisas precisam acontecer ao mesmo tempo.',
+}
+
+/**
+ * Registros pessoais de viagem — NÃO são experiências profissionais.
+ * Locais identificados pelos marcos visíveis nas fotos (confirmar com Yasmin).
+ * Para adicionar novos registros: coloque a imagem em src/assets/images/yasmin/,
+ * importe-a no topo deste arquivo e acrescente um item aqui.
+ */
+export const travel = {
+  eyebrow: 'Fora do roteiro',
+  title: 'Nem tudo cabe em um currículo.',
+  text: 'Fora do trabalho, viajar é um jeito de manter a curiosidade em movimento: outros lugares, outros ritmos, outras formas de viver a cidade. Alguns registros pessoais.',
+  photos: [
+    {
+      src: imgTibre,
+      alt: 'Yasmin Manasera de boina de couro e casaco preto às margens do rio Tibre, em Roma, com pontes e a cúpula da Basílica de São Pedro ao fundo.',
+      place: 'Roma, Itália',
+      caption: 'Às margens do Tibre',
+    },
+    {
+      src: imgCastel,
+      alt: "Yasmin Manasera na Ponte Sant'Angelo, em Roma, em frente a uma estátua de anjo e ao Castel Sant'Angelo.",
+      place: 'Roma, Itália',
+      caption: "Ponte e Castel Sant'Angelo",
+    },
+  ],
+}
+
+export const closing = {
+  eyebrow: 'Contato',
+  titleA: 'Boas ideias',
+  titleB: 'merecem sair',
+  titleC: 'do papel.',
+  text: 'Diagnóstico, estratégia e execução funcionam melhor quando começam com uma boa conversa. Se existe um desafio de negócio na mesa, vamos conversar sobre o que pode ser construído.',
+  signoff: 'Prazer em conhecer.',
+}
+
+export const images = {
+  heroCutout: {
+    src: imgHero1100,
+    srcSet: `${imgHero640} 640w, ${imgHero1100} 1100w`,
+    width: 1100,
+    height: 1142,
+    alt: 'Retrato em preto e branco de Yasmin Manasera sorrindo, de óculos e blazer preto.',
+  },
+}

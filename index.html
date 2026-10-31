@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#121212" />
+    <title>Yasmin Manasera — Estratégia, marketing e vendas</title>
+    <meta name="description" content="Yasmin Manasera conecta estratégia, marketing e vendas para transformar desafios de negócio em planos de ação. Diagnóstico de negócios, estratégia comercial e gestão de projetos." />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Prazer, Yasmin Manasera." />
+    <meta property="og:description" content="Estratégia, marketing e vendas para transformar desafios de negócio em planos de ação." />
+    <meta property="og:locale" content="pt_BR" />
+    <script>
+      /* Evita "flash" da home antes da abertura: decide o estado inicial antes do React. */
+      try {
+        var seen = sessionStorage.getItem('ym:intro-seen') === '1';
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (!seen && !reduce) document.documentElement.classList.add('intro-pending');
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <noscript>
+      <div style="padding:2rem;font-family:system-ui">
+        <h1>Yasmin Manasera</h1>
+        <p>Estratégia, marketing e vendas para transformar desafios de negócio em planos de ação.</p>
+        <p><a href="mailto:yasmin.manasera@gmail.com">yasmin.manasera@gmail.com</a> · <a href="https://www.linkedin.com/in/yasmin-manasera-57046216a/">LinkedIn</a></p>
+      </div>
+    </noscript>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

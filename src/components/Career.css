@@ -1,0 +1,288 @@
+.career {
+  background: var(--paper);
+  padding-bottom: calc(var(--section-y) * 0.8);
+}
+.career__head {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+  gap: clamp(2rem, 5vw, 6rem);
+  align-items: end;
+  padding-bottom: clamp(3rem, 7vw, 7rem);
+}
+.career__title {
+  margin-top: 2rem;
+}
+.career__title .serif-accent {
+  color: var(--ink);
+}
+.career__intro .lead {
+  color: var(--gray);
+}
+
+/* ---------- Capítulo ---------- */
+.chapter {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(2rem, 5vw, 6rem);
+  padding: clamp(3rem, 6vw, 5rem) 0;
+  border-top: 2px solid var(--ink);
+}
+.chapter__years-inner {
+  position: sticky;
+  top: calc(var(--header-h) + 2rem);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.chapter__year {
+  display: block;
+  font-size: clamp(4.5rem, 1rem + 10vw, 12.5rem);
+  font-weight: 820;
+  font-stretch: 62%;
+  line-height: 0.82;
+  letter-spacing: -0.04em;
+}
+.chapter__year--end {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--ink);
+}
+.chapter__year--end.is-now {
+  color: var(--signal);
+  -webkit-text-stroke: 0;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-stretch: 100%;
+  letter-spacing: -0.03em;
+  line-height: 0.9;
+}
+.chapter__year-rule {
+  display: block;
+  width: clamp(3rem, 6vw, 5.5rem);
+  height: 3px;
+  margin: 0.9rem 0 1rem 0.3rem;
+  background: var(--signal);
+}
+
+.chapter__label {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.65rem;
+  font-size: var(--fs-micro);
+  font-weight: 650;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+.chapter__now {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-left: 0.35rem;
+  padding: 0.3rem 0.6rem;
+  background: var(--ink);
+  color: var(--paper);
+  letter-spacing: 0.12em;
+}
+.chapter__now i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--signal);
+  animation: now-blink 1.6s ease-in-out infinite;
+}
+@keyframes now-blink {
+  50% {
+    opacity: 0.25;
+  }
+}
+.chapter__company {
+  margin-top: 1rem;
+  font-size: clamp(2.3rem, 1.2rem + 3.6vw, 4.8rem);
+  font-weight: 760;
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+}
+.chapter__role {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.4rem 1rem;
+  margin-top: 1rem;
+  font-size: clamp(1.1rem, 0.95rem + 0.5vw, 1.4rem);
+}
+.chapter__role strong {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.25em;
+  letter-spacing: -0.01em;
+}
+.chapter__role span {
+  font-size: var(--fs-small);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+
+.chapter__progression {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+}
+.chapter__progression li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.chapter__progression li > span:nth-child(2) {
+  padding: 0.65rem 0.9rem;
+  border: var(--stroke);
+  background: var(--white);
+}
+.chapter__progression li:last-child > span:nth-child(2) {
+  background: var(--signal);
+  box-shadow: 4px 4px 0 var(--ink);
+}
+.chapter__step-num {
+  font-size: var(--fs-micro);
+  font-weight: 700;
+  color: var(--gray);
+}
+
+.chapter__summary {
+  max-width: 54ch;
+  margin-top: 1.75rem;
+  font-size: var(--fs-lead);
+  line-height: 1.45;
+  letter-spacing: -0.012em;
+  text-wrap: pretty;
+}
+
+.chapter__groups {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.25rem, 2.4vw, 2.5rem);
+  margin-top: clamp(2.25rem, 4vw, 3.5rem);
+}
+.chapter__group {
+  padding-top: 1rem;
+  border-top: 1px solid var(--line-strong);
+}
+.chapter__group h4 {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+.chapter__group h4 span {
+  font-size: var(--fs-micro);
+  font-weight: 650;
+  color: var(--signal);
+  font-variant-numeric: tabular-nums;
+}
+.chapter__group ul {
+  margin-top: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.chapter__group li {
+  position: relative;
+  padding-left: 1.1rem;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  color: var(--ink-3);
+}
+.chapter__group li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 6px;
+  height: 6px;
+  background: var(--ink);
+}
+.chapter--current .chapter__group li::before {
+  background: var(--signal);
+}
+
+/* ---------- Ponte entre capítulos ---------- */
+.career__bridge {
+  margin: clamp(2rem, 4vw, 3rem) calc(-1 * var(--gutter));
+  padding: clamp(4rem, 9vw, 8rem) var(--gutter);
+  background: var(--blush);
+  overflow: hidden;
+}
+.career__bridge-inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.42fr);
+  gap: clamp(1.5rem, 4vw, 4rem);
+  align-items: end;
+}
+.career__bridge-mark {
+  position: absolute;
+  top: -0.32em;
+  left: -0.08em;
+  font-size: clamp(10rem, 22vw, 22rem);
+  line-height: 1;
+  color: var(--signal);
+  pointer-events: none;
+}
+.career__bridge-quote {
+  position: relative;
+  font-size: clamp(2rem, 0.8rem + 4.2vw, 5.4rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.045em;
+  text-wrap: balance;
+}
+.career__bridge-quote .serif-accent {
+  font-size: 1.08em;
+}
+.career__bridge-text {
+  max-width: 34ch;
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+@media (max-width: 1023px) {
+  .career__head,
+  .chapter,
+  .career__bridge-inner {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .chapter {
+    gap: 1.5rem;
+  }
+  .chapter__years-inner {
+    position: static;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+  }
+  .chapter__year {
+    font-size: clamp(4rem, 19vw, 8rem);
+  }
+  .chapter__year-rule {
+    margin: 0;
+  }
+  .chapter__groups {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (min-width: 700px) and (max-width: 1023px) {
+  .chapter__groups {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

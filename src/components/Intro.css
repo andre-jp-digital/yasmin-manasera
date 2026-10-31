@@ -1,0 +1,242 @@
+/* ==========================================================================
+   Abertura "Prazer"
+   ========================================================================== */
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  color: var(--paper);
+  overflow: hidden;
+}
+
+.intro__curtain {
+  position: absolute;
+  inset: 0;
+}
+.intro__curtain--ink {
+  background:
+    radial-gradient(120% 80% at 50% 120%, rgba(255, 75, 35, 0.07), transparent 60%),
+    var(--ink);
+}
+.intro__curtain--signal {
+  background: var(--signal);
+}
+
+/* Iniciais fantasmas */
+.intro__ghost {
+  position: absolute;
+  bottom: -0.16em;
+  font-size: min(92svh, 70vw);
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(242, 239, 233, 0.2);
+  user-select: none;
+  pointer-events: none;
+}
+.intro__ghost--y {
+  left: -0.06em;
+}
+.intro__ghost--m {
+  right: -0.08em;
+}
+
+/* Moldura editorial */
+.intro__chrome {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+.intro__top,
+.intro__bottom {
+  position: absolute;
+  left: var(--gutter);
+  right: var(--gutter);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  font-size: var(--fs-micro);
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.intro__top {
+  top: clamp(1rem, 3vh, 2rem);
+}
+.intro__bottom {
+  bottom: clamp(1rem, 3vh, 2rem);
+  color: var(--gray-on-ink);
+}
+.intro__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.intro__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--signal);
+}
+.intro__skip {
+  pointer-events: auto;
+  display: inline-flex;
+  gap: 0.5rem;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 1rem;
+  border: 1px solid var(--line-on-ink);
+  border-radius: 999px;
+  font-size: var(--fs-micro);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transition:
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out);
+}
+.intro__skip:hover {
+  background: var(--paper);
+  color: var(--ink);
+  border-color: var(--paper);
+}
+
+/* Centro */
+.intro__center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1rem, 3vh, 2rem);
+  padding: 0 var(--gutter);
+  text-align: center;
+  /* a camada central não pode bloquear o botão "Pular" */
+  pointer-events: none;
+}
+.intro__center > * {
+  pointer-events: auto;
+}
+
+.intro__word {
+  display: inline-flex;
+  align-items: flex-end;
+  font-size: clamp(4.2rem, 17.5vw, 19rem);
+  font-weight: 850;
+  font-stretch: 125%;
+  line-height: 0.82;
+  letter-spacing: -0.045em;
+  color: var(--paper);
+  padding: 0.04em 0.08em;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.intro__word:disabled {
+  cursor: default;
+}
+.intro__mask {
+  display: inline-block;
+  overflow: hidden;
+  padding-bottom: 0.04em;
+}
+.intro__letter {
+  display: inline-block;
+  transition: color 260ms var(--ease-out);
+  transition-delay: calc(var(--i, 0) * 35ms);
+}
+.intro__letter--dot {
+  color: var(--signal);
+  transform-origin: 50% 85%;
+}
+.intro__word:not(:disabled):hover .intro__letter:not(.intro__letter--dot),
+.intro__word:focus-visible .intro__letter:not(.intro__letter--dot) {
+  color: var(--signal);
+}
+.intro__word:focus-visible {
+  outline-offset: 0.15em;
+}
+
+.intro__name {
+  font-size: clamp(1.35rem, 0.9rem + 2vw, 2.6rem);
+  font-weight: 650;
+  letter-spacing: -0.035em;
+  line-height: 1;
+}
+.intro__name-word {
+  display: inline-flex;
+  align-items: flex-end;
+}
+.intro__name-initial {
+  display: inline-block;
+}
+.intro__name-rest {
+  position: relative;
+  display: inline-flex;
+}
+.intro__name-mask {
+  display: inline-block;
+  overflow: hidden;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+.intro__name-mask > span {
+  display: inline-block;
+}
+.intro__name-blank {
+  position: absolute;
+  left: 0.08em;
+  right: 0.04em;
+  bottom: 0.02em;
+  height: 2px;
+  background: var(--signal);
+  transform-origin: right center;
+}
+
+.intro__hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: var(--fs-small);
+  color: var(--gray-on-ink);
+  letter-spacing: 0.01em;
+}
+.intro__pulse {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--signal);
+}
+.intro__pulse::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 1px solid var(--signal);
+  animation: intro-pulse 1.8s var(--ease-out) infinite;
+}
+@keyframes intro-pulse {
+  from {
+    transform: scale(0.4);
+    opacity: 1;
+  }
+  to {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .intro__long {
+    display: none;
+  }
+  .intro__bottom span:last-child {
+    display: none;
+  }
+  .intro__label {
+    letter-spacing: 0.12em;
+  }
+}

@@ -1,0 +1,271 @@
+.contact {
+  background: var(--signal);
+  color: var(--ink);
+  overflow: hidden;
+}
+.contact .eyebrow__index {
+  color: var(--ink);
+}
+.contact__title {
+  margin-top: 2rem;
+  font-size: clamp(3.2rem, 0.6rem + 9.4vw, 12rem);
+  font-weight: 830;
+  line-height: 0.86;
+  letter-spacing: -0.06em;
+}
+.contact__mask {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+.contact__line {
+  display: block;
+}
+.contact__line--1 {
+  padding-left: clamp(0rem, 9vw, 11rem);
+}
+.contact__line--2 {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  font-size: 1.12em;
+  line-height: 0.9;
+}
+
+.contact__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(2rem, 5vw, 6rem);
+  align-items: end;
+  margin-top: clamp(3rem, 6vw, 5rem);
+}
+.contact__text p {
+  max-width: 42ch;
+  font-size: var(--fs-lead);
+  line-height: 1.42;
+  letter-spacing: -0.012em;
+}
+.contact__primary {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.9rem;
+}
+.contact__email {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    'label arrow'
+    'addr arrow';
+  align-items: center;
+  column-gap: 1.5rem;
+  width: 100%;
+  padding: clamp(1.25rem, 2.4vw, 2rem);
+  background: var(--ink);
+  color: var(--paper);
+  border: var(--stroke);
+  box-shadow: 0 0 0 var(--paper);
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+}
+.contact__email:hover {
+  transform: translate(-5px, -5px);
+  box-shadow: 8px 8px 0 var(--paper);
+}
+.contact__email-label {
+  grid-area: label;
+  font-size: var(--fs-micro);
+  font-weight: 650;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gray-on-ink);
+}
+.contact__email-addr {
+  grid-area: addr;
+  margin-top: 0.35rem;
+  font-size: clamp(1.15rem, 0.6rem + 1.9vw, 2.3rem);
+  font-weight: 650;
+  letter-spacing: -0.035em;
+  overflow-wrap: anywhere;
+}
+.contact__email-arrow {
+  grid-area: arrow;
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--signal);
+  color: var(--ink);
+  transition: transform var(--dur) var(--ease-out);
+}
+.contact__email:hover .contact__email-arrow {
+  transform: rotate(-45deg);
+}
+.contact__copy {
+  min-height: 44px;
+  padding: 0 0.25rem;
+  font-size: 0.85rem;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-bottom: 1.5px solid var(--ink);
+}
+
+.contact__list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: clamp(3rem, 6vw, 5rem);
+  border-top: 1.5px solid var(--ink);
+}
+.contact__list li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1.4rem 1.5rem 0.5rem 0;
+}
+.contact__list li + li {
+  padding-left: 1.5rem;
+  border-left: 1.5px solid var(--ink);
+}
+.contact__k {
+  font-size: 1.05rem;
+  font-weight: 750;
+  letter-spacing: -0.02em;
+}
+.contact__list a {
+  width: fit-content;
+  font-size: 1rem;
+  background: linear-gradient(var(--ink), var(--ink)) left bottom / 0% 1.5px no-repeat;
+  transition: background-size var(--dur) var(--ease-out);
+  overflow-wrap: anywhere;
+}
+.contact__list a:hover {
+  background-size: 100% 1.5px;
+}
+
+/* ---------- Rodapé ---------- */
+.footer {
+  position: relative;
+  padding: clamp(3rem, 6vw, 5rem) var(--gutter) 1.75rem;
+  background: var(--ink);
+  color: var(--paper);
+  overflow: hidden;
+}
+.footer__mono {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 -0.04em 0.15em;
+  font-size: clamp(9rem, 34vw, 34rem);
+  line-height: 0.75;
+  letter-spacing: -0.06em;
+  user-select: none;
+}
+.footer__mono span:first-child {
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(242, 239, 233, 0.4);
+}
+.footer__mono span:last-child {
+  color: var(--signal);
+}
+.footer__row {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1.5rem;
+  padding: 2rem 0;
+  border-top: 1px solid var(--line-on-ink);
+}
+.footer__signoff {
+  font-size: clamp(2rem, 1.2rem + 3vw, 3.8rem);
+  line-height: 1;
+}
+.footer__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+.footer__actions a,
+.footer__actions button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  padding: 0 1.1rem;
+  border: 1px solid var(--line-on-ink);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition:
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out);
+}
+.footer__actions a:hover,
+.footer__actions button:hover {
+  background: var(--paper);
+  color: var(--ink);
+  border-color: var(--paper);
+}
+.footer__base {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+  font-size: var(--fs-micro);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gray-on-ink);
+}
+
+@media (max-width: 900px) {
+  .contact__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .contact__list {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .contact__email {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      'label'
+      'addr';
+    padding-right: 5.5rem;
+  }
+  .contact__email-arrow {
+    position: absolute;
+    right: 1.25rem;
+    top: 50%;
+    margin-top: -24px;
+    width: 48px;
+    height: 48px;
+  }
+  .contact__email-addr {
+    font-size: clamp(1.1rem, 5.4vw, 1.6rem);
+    overflow-wrap: normal;
+  }
+  .contact__list li,
+  .contact__list li + li {
+    padding: 1.1rem 0;
+    border-left: 0;
+    border-bottom: 1.5px solid var(--ink);
+  }
+}
+
+@media (max-width: 600px) {
+  .contact__title {
+    font-size: 12.2vw;
+  }
+  .contact__line {
+    white-space: nowrap;
+  }
+  .contact__line--1 {
+    padding-left: 0.5em;
+  }
+}
