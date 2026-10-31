@@ -1,7 +1,7 @@
 /* ==========================================================================
    Hero — peça de campanha
    Camadas (de trás para frente):
-   bloco vermelho → disco blush → Y / M → fotografia → perna do M → anel → etiquetas
+   bloco vermelho → Y → fotografia → M (nada envolve a cabeça)
    ========================================================================== */
 .hero {
   --hero-h: max(100svh, 720px);
@@ -123,9 +123,9 @@
 /* ---------- Palco ---------- */
 .hero__stage {
   /* Caixa da fotografia (1100 × 1142). Tudo em .fig é relativo a ela. */
-  --fig-h: calc(var(--stage-h) * 0.87);
+  --fig-h: calc(var(--stage-h) * 0.8);
   --fig-w: calc(var(--fig-h) * 1100 / 1142);
-  --fig-x: 49%;
+  --fig-x: 56%;
   grid-area: stage;
   position: relative;
   margin-right: calc(-1 * var(--gutter));
@@ -135,14 +135,11 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  /* corta tudo na base do palco (a haste do Y não invade o texto no mobile) */
+  /* corta tudo na base do palco */
   clip-path: inset(-100vh -100vw 0 -100vw);
 }
 .stage__layer--block {
   z-index: 1;
-}
-.stage__layer--disc {
-  z-index: 2;
 }
 .stage__layer--mono {
   z-index: 3;
@@ -150,14 +147,8 @@
 .stage__layer--photo {
   z-index: 5;
 }
-.stage__layer--front {
-  z-index: 6;
-}
 .stage__layer--m {
   z-index: 7;
-}
-.stage__layer--ring {
-  z-index: 8;
 }
 
 /* Durante a transição da abertura, nome e iniciais passam por cima da cortina. */
@@ -174,65 +165,64 @@
   height: var(--fig-h);
 }
 
-/* Moldura em traço: estrutura de cartaz atrás da figura */
+/* Bloco vermelho atrás do corpo. O topo fica na linha do queixo, alinhado
+   ao topo do Y: o rosto inteiro fica livre acima — nada atrás da cabeça. */
 .stage__block {
   position: absolute;
-  left: 6%;
-  right: calc(var(--gutter) + 2%);
-  top: 6%;
+  left: -27%;
+  right: -60vw;
+  top: 45%;
   bottom: 0;
-  border: 1.5px solid var(--ink);
-  border-bottom: 0;
-  background:
-    linear-gradient(var(--ink), var(--ink)) left 1.25rem top 1.25rem / 2.25rem 1.5px no-repeat,
-    linear-gradient(var(--ink), var(--ink)) left 1.25rem top 1.25rem / 1.5px 2.25rem no-repeat;
+  background: var(--signal);
 }
-
-/* Disco blush atrás da cabeça */
-.stage__disc {
+/* trama pontilhada no canto superior direito (longe do rosto) */
+.stage__dots {
   position: absolute;
-  left: 5%;
-  top: -12%;
-  width: 85%;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: var(--blush);
-  overflow: hidden;
-}
-.stage__disc-dots {
-  position: absolute;
-  inset: 0;
+  top: 1.25rem;
+  left: calc(127% + 1.25rem);
+  width: clamp(80px, 9vw, 150px);
+  height: clamp(80px, 9vw, 150px);
   background-image: radial-gradient(var(--ink) 1.3px, transparent 1.6px);
-  background-size: 15px 15px;
-  -webkit-mask-image: linear-gradient(215deg, #000 0%, #000 18%, transparent 42%);
-  mask-image: linear-gradient(215deg, #000 0%, #000 18%, transparent 42%);
-  opacity: 0.8;
+  background-size: 14px 14px;
+  opacity: 0.55;
+}
+/* marcas de corte, como numa prova gráfica */
+.stage__crop {
+  position: absolute;
+  top: -14px;
+  width: 22px;
+  height: 22px;
+  border-top: 1.5px solid var(--ink);
+}
+.stage__crop--tl {
+  left: -14px;
+  border-left: 1.5px solid var(--ink);
+}
+.stage__crop--tr {
+  display: none;
 }
 
-/* Y: junção dos braços logo abaixo do queixo (≈ 60% da altura da foto);
-   centro do entalhe (0,258em) alinhado ao centro do rosto (≈ 47,5%). */
+/* Y: sólido, à esquerda do retrato. O topo dos braços (0,12em abaixo do
+   topo da caixa) fica abaixo da linha do queixo; a letra cruza a borda
+   do bloco e a base passa por trás do ombro. */
 .stage__y {
   position: absolute;
-  font-size: calc(var(--fig-h) * 1.5);
+  font-size: calc(var(--fig-h) * 0.8);
   line-height: 1;
-  top: calc(var(--fig-h) * 0.57 - 0.449em);
-  left: 47.5%;
-  margin-left: -0.258em;
-  color: var(--signal);
+  top: calc(var(--fig-h) * 0.48 - 0.12em);
+  right: 100%;
+  margin-right: -0.17em;
+  color: var(--ink);
   user-select: none;
 }
-/* Cópia recortada: apenas a haste, à frente do blazer */
-.stage__y--front {
-  clip-path: inset(50% 0 0 0);
-}
 
-/* M: carimbo em primeiro plano */
+/* M: carimbo em primeiro plano, à direita */
 .stage__m {
   position: absolute;
-  right: -4%;
+  right: 1%;
   bottom: 4%;
   margin-bottom: -0.16em;
-  font-size: calc(var(--fig-h) * 0.46);
+  font-size: calc(var(--fig-h) * 0.42);
   line-height: 1;
   color: var(--paper);
   -webkit-text-stroke: 1.5px var(--ink);
@@ -247,30 +237,14 @@
   filter: contrast(1.04);
 }
 
-.stage__ring {
-  position: absolute;
-  top: 9%;
-  left: -8%;
-  width: 17%;
-  aspect-ratio: 1;
-  border: 1.5px solid var(--ink);
-  border-radius: 50%;
-}
-.stage__ring-dot {
-  position: absolute;
-  width: 14%;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: var(--signal);
-  top: 50%;
-  left: 50%;
-  translate: -50% -50%;
-}
-
 /* ---------- Tablet ---------- */
 @media (max-width: 1180px) and (min-width: 901px) {
   .hero {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+  .hero__stage {
+    --fig-h: calc(var(--stage-h) * 0.66);
+    --fig-x: 58%;
   }
 }
 
@@ -302,22 +276,19 @@
     margin: -0.15em calc(-1 * var(--gutter)) 0;
   }
   .hero__stage {
-    --fig-h: calc(var(--stage-h) * 0.88);
-    --fig-x: 50%;
+    --fig-h: calc(var(--stage-h) * 0.76);
+    --fig-x: 57%;
   }
-  .stage__block {
-    left: var(--gutter);
-    right: var(--gutter);
-    top: 4%;
-  }
-  .stage__ring {
-    left: 2%;
-    top: 5%;
-    width: 15%;
+  .stage__dots {
+    display: none;
   }
   .stage__m {
     right: 2%;
-    font-size: calc(var(--fig-h) * 0.4);
+    font-size: calc(var(--fig-h) * 0.38);
+  }
+  .stage__y {
+    font-size: calc(var(--fig-h) * 0.7);
+    margin-right: -0.14em;
   }
   .hero__body {
     padding-top: 2.25rem;
@@ -329,3 +300,14 @@
   }
 }
 
+
+/* Tablet em pé / telas médias: figura maior, sem vazio entre nome e foto */
+@media (min-width: 600px) and (max-width: 900px) {
+  .hero {
+    --stage-h: min(84vw, 680px);
+  }
+  .hero__stage {
+    --fig-h: calc(var(--stage-h) * 0.9);
+    --fig-x: 59%;
+  }
+}

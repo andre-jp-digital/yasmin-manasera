@@ -179,30 +179,30 @@ export function Hero() {
         </h1>
       </div>
 
-      {/* ---------- Composição: foto + Y M + elementos gráficos ----------
-          Tudo dentro de .fig usa coordenadas da própria fotografia, então o
-          encaixe do Y em volta da cabeça se mantém em qualquer tamanho de tela. */}
+      {/* ---------- Composição: Y · retrato · M ----------
+          Princípio: nenhum elemento gráfico envolve ou toca a cabeça.
+          O bloco vermelho fica atrás do corpo e a cabeça "sai" pelo topo
+          (quebra de moldura); o Y fica à esquerda, abaixo da linha do queixo;
+          o M é um carimbo em primeiro plano à direita. Tudo em .fig usa
+          coordenadas da própria fotografia. */}
       <div className="hero__stage">
-        <Depth x={sx} y={sy} depth={8} className="stage__layer stage__layer--block">
-          <motion.div
-            className="stage__block"
-            initial={{ clipPath: 'inset(0% 0% 0% 100%)' }}
-            animate={{ clipPath: show ? 'inset(0% 0% 0% 0%)' : 'inset(0% 0% 0% 100%)' }}
-            transition={{ duration: 1.1, ease: easeInOut, delay: settleDelay - 0.15 }}
-          />
-        </Depth>
-
-        <Depth x={sx} y={sy} depth={-18} className="stage__layer stage__layer--disc">
+        <Depth x={sx} y={sy} depth={6} className="stage__layer stage__layer--block">
           <div className="fig">
-            <motion.div className="stage__disc" {...enter(0.05, { scale: 0.6 })}>
-              <span className="stage__disc-dots" />
+            <motion.div
+              className="stage__block"
+              initial={{ clipPath: 'inset(100% 0% 0% 0%)' }}
+              animate={{ clipPath: show ? 'inset(0% 0% 0% 0%)' : 'inset(100% 0% 0% 0%)' }}
+              transition={{ duration: 1.1, ease: easeInOut, delay: settleDelay - 0.2 }}
+            >
+              <span className="stage__dots" />
+              <span className="stage__crop stage__crop--tl" />
+              <span className="stage__crop stage__crop--tr" />
             </motion.div>
           </div>
         </Depth>
 
-        {/* Y atrás: os braços sobem atrás do cabelo, dos dois lados do rosto */}
-        <Depth x={sx} y={sy} depth={-7} className="stage__layer stage__layer--mono">
-          <div className="fig fig--center">{monogram('Y', 'stage__y serif')}</div>
+        <Depth x={sx} y={sy} depth={-10} className="stage__layer stage__layer--mono">
+          <div className="fig">{monogram('Y', 'stage__y serif')}</div>
         </Depth>
 
         <div className="stage__layer stage__layer--photo">
@@ -211,7 +211,7 @@ export function Hero() {
               className="stage__photo"
               src={images.heroCutout.src}
               srcSet={images.heroCutout.srcSet}
-              sizes="(max-width: 900px) 92vw, 46vw"
+              sizes="(max-width: 900px) 80vw, 42vw"
               width={images.heroCutout.width}
               height={images.heroCutout.height}
               alt={images.heroCutout.alt}
@@ -224,30 +224,9 @@ export function Hero() {
           </div>
         </div>
 
-        {/* A mesma letra Y, recortada: só a haste aparece NA FRENTE do blazer.
-            Profundidade por recorte — sem fabricar pose ou objetos na foto. */}
-        <Depth x={sx} y={sy} depth={-7} className="stage__layer stage__layer--front">
-          <div className="fig fig--center">
-            <motion.span className="stage__y stage__y--front serif" {...enter(0.45)}>
-              Y
-            </motion.span>
-          </div>
-        </Depth>
-
-        {/* M: carimbo em primeiro plano */}
         <Depth x={sx} y={sy} depth={12} className="stage__layer stage__layer--mono stage__layer--m">
           <div className="fig">{monogram('M', 'stage__m serif')}</div>
         </Depth>
-
-        <Depth x={sx} y={sy} depth={-26} className="stage__layer stage__layer--ring">
-          <div className="fig">
-            <motion.div className="stage__ring" {...enter(0.35, { scale: 0.4, rotate: -40 })}>
-              <span className="stage__ring-dot" />
-            </motion.div>
-          </div>
-        </Depth>
-
-
       </div>
 
       {/* ---------- Corpo: posicionamento + CTAs ---------- */}

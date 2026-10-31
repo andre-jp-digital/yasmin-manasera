@@ -70,11 +70,11 @@ Para editar textos, mexa só em `src/content/profile.ts`.
 - **Tipografia:** Archivo variável (peso 100–900 e largura 62–125%) para
   títulos e texto. Instrument Serif para as iniciais e os acentos editoriais.
   As duas são servidas localmente via Fontsource.
-- **Hero:** o Y vermelho gigante "abraça" o rosto. Os braços sobem atrás do
-  cabelo e a haste passa *na frente* do blazer: é a mesma letra recortada por
-  `clip-path`, sem fabricar pose. O M funciona como carimbo em primeiro
-  plano. Tudo é posicionado em coordenadas da própria foto (`.fig`), então o
-  encaixe se mantém em qualquer tela.
+- **Hero:** retrato P&B saindo pelo topo de um bloco vermelho (quebra de
+  moldura), com o **Y** sólido em preto à esquerda, sobre o vermelho, e o
+  **M** como carimbo em primeiro plano à direita. Yasmin fica literalmente
+  entre as iniciais. Regra de composição: nenhum elemento gráfico envolve ou
+  toca a cabeça. Tudo é posicionado em coordenadas da própria foto (`.fig`).
 - **Ritmo das seções:** papel → faixa-letreiro → tinta (pensamento) → papel
   com capítulos editoriais e uma faixa blush → branco com painéis-cartaz →
   papel com a "equação" da formação → colagem de viagem → vermelho (contato)
@@ -139,6 +139,6 @@ contato falso.
 2. Para o hero: gere o recorte (instruções no topo de
    `scripts/process_images.py`) e rode `python3 scripts/process_images.py`.
 3. Se a nova foto tiver outro enquadramento, ajuste em `Hero.css`:
-   - `--fig-h`: altura da foto no palco.
-   - `.stage__y`: o `top` (junção do Y ≈ logo abaixo do queixo, em % da
-     altura) e o `left` (centro do rosto, em % da largura).
+   - `--fig-h` e `--fig-x`: tamanho e posição da foto no palco.
+   - `.stage__block` (`top`): topo do bloco, na linha do queixo.
+   - `.stage__y` (`top`): topo do Y, alinhado ao topo do bloco.
