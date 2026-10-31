@@ -290,7 +290,7 @@ export const images = {
     src: imgHero1100,
     srcSet: `${imgHero640} 640w, ${imgHero1100} 1100w`,
     width: 1100,
-    height: 1142,
+    height: 1143,
     alt: 'Retrato em preto e branco de Yasmin Manasera sorrindo, de óculos e blazer preto.',
   },
 }

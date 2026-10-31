@@ -4,12 +4,13 @@ Gera os assets web a partir das fotos originais em assets-src/photos.
   python3 scripts/process_images.py
 
 1) Retrato de estúdio -> recorte (alpha) em P&B editorial de alto contraste.
-   O recorte (assets-src/photos/yasmin-retrato-recorte.png) foi gerado com
+   O alpha bruto (assets-src/photos/yasmin-retrato-recorte.png) foi gerado com
    `rembg` + modelo BiRefNet-portrait. Para regenerá-lo:
      pip install rembg
      python3 -c "from rembg import remove,new_session;from PIL import Image;\
        remove(Image.open('assets-src/photos/yasmin-retrato-estudio.webp').convert('RGB'),\
        session=new_session('birefnet-portrait')).save('assets-src/photos/yasmin-retrato-recorte.png')"
+   Depois rode scripts/refine_matte.py, que gera yasmin-retrato-recorte-refinado.png.
 2) Fotos de viagem -> crops verticais em cor (o P&B é aplicado via CSS).
 """
 from pathlib import Path
@@ -36,8 +37,7 @@ def editorial_bw(rgba: Image.Image) -> Image.Image:
     s = 1 / (1 + np.exp(-7.5 * (lum - 0.5)))
     s0, s1 = 1 / (1 + np.exp(3.75)), 1 / (1 + np.exp(-3.75))
     lum = (s - s0) / (s1 - s0) * 0.82 + lum * 0.18
-    # Alpha: aperta levemente as bordas semitransparentes (evita halo).
-    a = np.clip((a - 0.06) / 0.94, 0, 1) ** 1.15
+    # Alpha já refinado em refine_matte.py (sem ajustes extras aqui).
     g = (np.clip(lum, 0, 1) * 255).astype(np.uint8)
     out = np.dstack([g, g, g, (a * 255).astype(np.uint8)])
     return Image.fromarray(out, "RGBA")
@@ -50,7 +50,7 @@ def save_webp(im: Image.Image, name: str, width: int, quality: int = 84):
 
 
 # 1) Retrato recortado
-cut = Image.open(SRC / "yasmin-retrato-recorte.png").convert("RGBA")
+cut = Image.open(SRC / "yasmin-retrato-recorte-refinado.png").convert("RGBA")  # ver refine_matte.py
 bbox = cut.getchannel("A").point(lambda v: 255 if v > 8 else 0).getbbox()
 x0, y0, x1, y1 = bbox
 pad = 10

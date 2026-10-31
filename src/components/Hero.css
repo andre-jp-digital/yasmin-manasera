@@ -122,10 +122,16 @@
 
 /* ---------- Palco ---------- */
 .hero__stage {
-  /* Caixa da fotografia (1100 × 1142). Tudo em .fig é relativo a ela. */
-  --fig-h: calc(var(--stage-h) * 0.8);
-  --fig-w: calc(var(--fig-h) * 1100 / 1142);
-  --fig-x: 56%;
+  /* --y-size: corpo do Y (dimensionado pelo palco)
+     --fig-*: caixa da fotografia (1100 × 1143); tudo em .fig é relativo a ela.
+     A foto começa logo após a parte visível do Y e pode sangrar pela borda
+     direita (o ombro sai do quadro; o rosto fica sempre inteiro). */
+  --y-size: calc(var(--stage-h) * 0.6);
+  --fig-h: calc(var(--stage-h) * 0.93);
+  --fig-w: calc(var(--fig-h) * 1100 / 1143);
+  --fig-left: calc(var(--y-size) * 0.3);
+  /* topo do bloco e do Y, em fração da altura da foto (abaixo do queixo) */
+  --block-top: 0.5;
   grid-area: stage;
   position: relative;
   margin-right: calc(-1 * var(--gutter));
@@ -160,33 +166,25 @@
 .fig {
   position: absolute;
   bottom: 0;
-  left: calc(var(--fig-x) - var(--fig-w) / 2);
+  left: var(--fig-left);
   width: var(--fig-w);
   height: var(--fig-h);
 }
 
-/* Bloco vermelho atrás do corpo. O topo fica na linha do queixo, alinhado
+/* Bloco vermelho atrás do corpo. O topo fica abaixo do queixo, alinhado
    ao topo do Y: o rosto inteiro fica livre acima — nada atrás da cabeça. */
 .stage__block {
   position: absolute;
-  left: -27%;
-  right: -60vw;
-  top: 45%;
+  left: calc(var(--y-size) * -0.36);
+  right: -100vw;
+  top: calc(var(--fig-h) * var(--block-top));
   bottom: 0;
   background: var(--signal);
 }
-/* trama pontilhada no canto superior direito (longe do rosto) */
 .stage__dots {
-  position: absolute;
-  top: 1.25rem;
-  left: calc(127% + 1.25rem);
-  width: clamp(80px, 9vw, 150px);
-  height: clamp(80px, 9vw, 150px);
-  background-image: radial-gradient(var(--ink) 1.3px, transparent 1.6px);
-  background-size: 14px 14px;
-  opacity: 0.55;
+  display: none;
 }
-/* marcas de corte, como numa prova gráfica */
+/* marca de corte, como numa prova gráfica */
 .stage__crop {
   position: absolute;
   top: -14px;
@@ -202,27 +200,30 @@
   display: none;
 }
 
-/* Y: sólido, à esquerda do retrato. O topo dos braços (0,12em abaixo do
-   topo da caixa) fica abaixo da linha do queixo; a letra cruza a borda
-   do bloco e a base passa por trás do ombro. */
+/* Y: sólido, à esquerda do retrato, inteiro sobre o vermelho.
+   O topo dos braços (0,12em abaixo do topo da caixa) alinha com o bloco. */
 .stage__y {
   position: absolute;
-  font-size: calc(var(--fig-h) * 0.8);
+  font-size: var(--y-size);
   line-height: 1;
-  top: calc(var(--fig-h) * 0.48 - 0.12em);
+  top: calc(var(--fig-h) * var(--block-top) + 0.035em - 0.12em);
   right: 100%;
   margin-right: -0.17em;
   color: var(--ink);
   user-select: none;
 }
 
-/* M: carimbo em primeiro plano, à direita */
+/* M: carimbo em primeiro plano, ancorado à borda direita visível */
+.stage__m-box {
+  position: absolute;
+  inset: 0;
+}
 .stage__m {
   position: absolute;
-  right: 1%;
+  right: calc(var(--gutter) + 1.5%);
   bottom: 4%;
   margin-bottom: -0.16em;
-  font-size: calc(var(--fig-h) * 0.42);
+  font-size: calc(var(--stage-h) * 0.34);
   line-height: 1;
   color: var(--paper);
   -webkit-text-stroke: 1.5px var(--ink);
@@ -243,8 +244,8 @@
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   }
   .hero__stage {
-    --fig-h: calc(var(--stage-h) * 0.66);
-    --fig-x: 58%;
+    --y-size: calc(var(--stage-h) * 0.48);
+    --fig-h: calc(var(--stage-h) * 0.8);
   }
 }
 
@@ -276,19 +277,12 @@
     margin: -0.15em calc(-1 * var(--gutter)) 0;
   }
   .hero__stage {
-    --fig-h: calc(var(--stage-h) * 0.76);
-    --fig-x: 57%;
-  }
-  .stage__dots {
-    display: none;
+    --y-size: calc(var(--stage-h) * 0.5);
+    --fig-h: calc(var(--stage-h) * 0.9);
+    --fig-left: calc(var(--gutter) + var(--y-size) * 0.3);
   }
   .stage__m {
-    right: 2%;
-    font-size: calc(var(--fig-h) * 0.38);
-  }
-  .stage__y {
-    font-size: calc(var(--fig-h) * 0.7);
-    margin-right: -0.14em;
+    font-size: calc(var(--stage-h) * 0.3);
   }
   .hero__body {
     padding-top: 2.25rem;
@@ -307,7 +301,15 @@
     --stage-h: min(84vw, 680px);
   }
   .hero__stage {
-    --fig-h: calc(var(--stage-h) * 0.9);
-    --fig-x: 59%;
+    --y-size: calc(var(--stage-h) * 0.55);
+    --fig-h: calc(var(--stage-h) * 0.95);
+    --fig-left: calc(var(--gutter) + var(--y-size) * 0.35);
+  }
+}
+
+/* Telas largas: o nome cresce; o bloco desce para não tocar o "Manasera." */
+@media (min-width: 1600px) {
+  .hero__stage {
+    --block-top: 0.6;
   }
 }

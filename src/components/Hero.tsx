@@ -211,7 +211,7 @@ export function Hero() {
               className="stage__photo"
               src={images.heroCutout.src}
               srcSet={images.heroCutout.srcSet}
-              sizes="(max-width: 900px) 80vw, 42vw"
+              sizes="(max-width: 900px) 100vw, 52vw"
               width={images.heroCutout.width}
               height={images.heroCutout.height}
               alt={images.heroCutout.alt}
@@ -225,7 +225,7 @@ export function Hero() {
         </div>
 
         <Depth x={sx} y={sy} depth={12} className="stage__layer stage__layer--mono stage__layer--m">
-          <div className="fig">{monogram('M', 'stage__m serif')}</div>
+          <div className="stage__m-box">{monogram('M', 'stage__m serif')}</div>
         </Depth>
       </div>
 

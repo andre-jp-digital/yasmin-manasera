@@ -136,9 +136,10 @@ contato falso.
 ## Trocar ou adicionar fotos
 
 1. Coloque o original em `assets-src/photos/`.
-2. Para o hero: gere o recorte (instruções no topo de
-   `scripts/process_images.py`) e rode `python3 scripts/process_images.py`.
+2. Para o hero: gere o recorte bruto (instruções no topo de
+   `scripts/process_images.py`), refine o matte do cabelo com
+   `python3 scripts/refine_matte.py` e rode `python3 scripts/process_images.py`.
 3. Se a nova foto tiver outro enquadramento, ajuste em `Hero.css`:
-   - `--fig-h` e `--fig-x`: tamanho e posição da foto no palco.
-   - `.stage__block` (`top`): topo do bloco, na linha do queixo.
-   - `.stage__y` (`top`): topo do Y, alinhado ao topo do bloco.
+   - `--fig-h`, `--fig-left` e `--y-size`: tamanho da foto, posição e corpo do Y.
+   - `--block-top`: topo do bloco e do Y (fração da altura da foto, abaixo
+     do queixo).
