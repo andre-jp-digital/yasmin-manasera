@@ -53,14 +53,16 @@ export const hero = {
   ctaSecondary: 'Vamos conversar',
 }
 
-export const ticker = [
-  'Diagnóstico de negócios',
-  'Estratégia de marketing',
-  'Estratégia comercial',
-  'Gestão de contas',
-  'Gestão de projetos',
-  'Vendas B2B e B2C',
-  'Comunicação & campanhas',
+/**
+ * Letreiro estático (efeito de neon/LED com falha).
+ * `flaw`: índice da letra com "mau contato" (pisca mais que as outras).
+ */
+export const ticker: { text: string; flaw?: number }[] = [
+  { text: 'Diagnóstico de negócios' },
+  { text: 'Estratégia de marketing', flaw: 14 },
+  { text: 'Estratégia comercial' },
+  { text: 'Gestão de projetos', flaw: 12 },
+  { text: 'Vendas B2B e B2C' },
 ]
 
 export const thinking = {

@@ -1,54 +1,212 @@
-.ticker {
+/* ==========================================================================
+   Letreiro estático — neon/LED com falha
+   Piscadas = quedas de brilho (não apagões totais), < 3 por segundo.
+   ========================================================================== */
+.sign {
+  --glow: 0 0 4px rgba(255, 244, 236, 0.55), 0 0 14px rgba(255, 120, 80, 0.35), 0 0 28px rgba(255, 75, 35, 0.18);
   position: relative;
-  overflow: hidden;
   background: var(--ink);
   color: var(--paper);
   border-bottom: 1px solid var(--line-on-ink);
+  padding: clamp(1.1rem, 2.2vw, 1.6rem) var(--gutter);
+  overflow: hidden;
 }
-.ticker__track {
+/* leve textura de painel */
+.sign::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(242, 239, 233, 0.05) 1px, transparent 1.2px);
+  background-size: 6px 6px;
+  pointer-events: none;
+}
+
+.sign__list {
+  position: relative;
   display: flex;
-  width: max-content;
-  animation: ticker 48s linear infinite;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  row-gap: 0.6rem;
 }
-.ticker:hover .ticker__track {
-  animation-play-state: paused;
-}
-.ticker__group {
-  display: flex;
-  flex-shrink: 0;
-}
-.ticker__group li {
+.sign__item {
   display: flex;
   align-items: center;
-  gap: clamp(1.25rem, 2.5vw, 2.5rem);
-  padding: clamp(1rem, 2vw, 1.5rem) 0 clamp(1rem, 2vw, 1.5rem) clamp(1.25rem, 2.5vw, 2.5rem);
-  font-size: clamp(1.1rem, 0.7rem + 1.4vw, 2rem);
+  /* escala com a largura para caber numa linha (acima de 900px) */
+  font-size: clamp(0.85rem, 1.42vw, 1.4rem);
   font-weight: 600;
   font-stretch: 112%;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
   white-space: nowrap;
 }
-.ticker__group li:nth-child(even) span {
+.sign__item--serif .sign__text {
   font-family: var(--font-serif);
   font-style: italic;
   font-weight: 400;
   font-stretch: 100%;
-  letter-spacing: -0.01em;
-  font-size: 1.12em;
+  letter-spacing: -0.005em;
+  font-size: 1.14em;
 }
-.ticker__sep {
-  width: 0.5em;
-  height: 0.5em;
+
+.sign__sep {
+  width: 0.42em;
+  height: 0.42em;
+  margin: 0 clamp(0.75rem, 1.5vw, 2rem);
   background: var(--signal);
   rotate: 45deg;
+  opacity: 0.15;
+  transition: opacity 0.4s ease, box-shadow 0.4s ease;
 }
-@keyframes ticker {
-  to {
-    transform: translateX(-50%);
+
+/* estado desligado (antes de entrar na tela): tubos apagados */
+.sign__text {
+  opacity: 0.16;
+  text-shadow: none;
+}
+
+/* ligando: cada termo acende com um tremor, um após o outro */
+.sign.is-on .sign__text {
+  animation:
+    sign-power 0.9s steps(1, end) calc(var(--i) * 0.22s) both,
+    sign-flicker var(--dur) linear var(--delay) infinite;
+}
+.sign.is-on .sign__sep {
+  opacity: 1;
+  box-shadow: 0 0 8px rgba(255, 75, 35, 0.85), 0 0 18px rgba(255, 75, 35, 0.4);
+  transition-delay: calc(var(--i) * 0.22s + 0.3s);
+}
+
+/* letra com mau contato: mais fraca e mais instável */
+.sign.is-on .sign__flaw {
+  animation: sign-flaw 3.7s linear calc(var(--delay) + 0.4s) infinite;
+}
+
+@keyframes sign-power {
+  0% {
+    opacity: 0.16;
+    text-shadow: none;
+  }
+  20% {
+    opacity: 0.85;
+    text-shadow: var(--glow);
+  }
+  35% {
+    opacity: 0.3;
+    text-shadow: none;
+  }
+  55% {
+    opacity: 1;
+    text-shadow: var(--glow);
+  }
+  70% {
+    opacity: 0.55;
+    text-shadow: none;
+  }
+  100% {
+    opacity: 1;
+    text-shadow: var(--glow);
   }
 }
+
+/* ciclo longo, com duas falhas rápidas e uma queda curta */
+@keyframes sign-flicker {
+  0%,
+  100% {
+    opacity: 1;
+    text-shadow: var(--glow);
+  }
+  61% {
+    opacity: 1;
+    text-shadow: var(--glow);
+  }
+  62% {
+    opacity: 0.35;
+    text-shadow: none;
+  }
+  63.5% {
+    opacity: 1;
+    text-shadow: var(--glow);
+  }
+  65% {
+    opacity: 0.45;
+    text-shadow: none;
+  }
+  66.5% {
+    opacity: 1;
+    text-shadow: var(--glow);
+  }
+  88% {
+    opacity: 1;
+    text-shadow: var(--glow);
+  }
+  89% {
+    opacity: 0.6;
+    text-shadow: none;
+  }
+  91% {
+    opacity: 1;
+    text-shadow: var(--glow);
+  }
+}
+
+@keyframes sign-flaw {
+  0%,
+  100% {
+    opacity: 0.8;
+  }
+  18% {
+    opacity: 0.8;
+  }
+  20% {
+    opacity: 0.25;
+  }
+  24% {
+    opacity: 0.85;
+  }
+  27% {
+    opacity: 0.3;
+  }
+  31% {
+    opacity: 0.8;
+  }
+  72% {
+    opacity: 0.75;
+  }
+  74% {
+    opacity: 0.2;
+  }
+  82% {
+    opacity: 0.2;
+  }
+  84% {
+    opacity: 0.8;
+  }
+}
+
+/* Mobile: letreiro vertical, termos empilhados, sem separadores soltos */
+@media (max-width: 900px) {
+  .sign__list {
+    flex-direction: column;
+    row-gap: 0.4rem;
+  }
+  .sign__item {
+    font-size: 1.05rem;
+  }
+  .sign__sep {
+    display: none;
+  }
+}
+
+/* movimento reduzido: tudo aceso, sem piscar */
 @media (prefers-reduced-motion: reduce) {
-  .ticker__track {
+  .sign__text,
+  .sign.is-on .sign__text,
+  .sign.is-on .sign__flaw {
     animation: none;
+    opacity: 1;
+    text-shadow: var(--glow);
+  }
+  .sign__sep {
+    opacity: 1;
   }
 }
