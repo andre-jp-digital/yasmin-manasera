@@ -1,13 +1,22 @@
 import { motion } from 'motion/react'
 import { education } from '../content/profile'
 import { Eyebrow } from './SectionHead'
-import { MaskLines, Reveal } from './ui/Reveal'
+import { MaskLines } from './ui/Reveal'
 import './Education.css'
 
 const ease = [0.22, 1, 0.36, 1] as const
 
+/**
+ * Formação como uma "conta armada": as duas formações somadas em coluna,
+ * linha da soma e o resultado. Operadores (+ e =) no mesmo eixo vertical.
+ */
 export function Education() {
   const [com, gest] = education.items
+  const rows = [
+    { op: null, item: com, outline: false },
+    { op: '+', item: gest, outline: true },
+  ]
+
   return (
     <section id="formacao" className="section education" data-theme="light" aria-labelledby="formacao-title">
       <div className="container">
@@ -23,61 +32,57 @@ export function Education() {
           />
         </div>
 
-        {/* Equação: Comunicação + Gestão = marca e negócio na mesma conversa */}
-        <div className="equation">
-          {[com, gest].map((item, i) => (
+        <motion.div
+          className="sum"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: '0px 0px -15% 0px' }}
+          transition={{ staggerChildren: 0.18 }}
+        >
+          <p className="sr-only">
+            Comunicação mais gestão é igual a {education.result}
+          </p>
+
+          {rows.map(({ op, item, outline }) => (
             <motion.article
               key={item.institution}
-              className={`degree degree--${i}`}
-              initial={{ opacity: 0, y: 50, rotate: i === 0 ? -2 : 2 }}
-              whileInView={{ opacity: 1, y: 0, rotate: 0 }}
-              viewport={{ once: true, margin: '0px 0px -10% 0px' }}
-              transition={{ duration: 0.9, ease, delay: i * 0.15 }}
+              className="sum__row"
+              variants={{ hidden: { opacity: 0, y: 36 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease } } }}
             >
-              <p className="degree__note">{item.note}</p>
-              <p className="degree__word" aria-hidden="true">
+              <span className="sum__op" aria-hidden="true">
+                {op && <span className="sum__op-glyph">{op}</span>}
+              </span>
+              <p className={`sum__word${outline ? ' sum__word--outline' : ''}`} aria-hidden="true">
                 {item.word}
               </p>
-              <div className="degree__meta">
-                <h3 className="degree__name">{item.degree}</h3>
-                <p className="degree__inst serif">{item.institution}</p>
+              <div className="sum__meta">
+                <p className="sum__note">{item.note}</p>
+                <h3 className="sum__degree">{item.degree}</h3>
+                <p className="sum__inst serif">{item.institution}</p>
               </div>
             </motion.article>
           ))}
 
-          <motion.span
-            className="equation__op equation__op--plus"
+          {/* linha da soma */}
+          <motion.div
+            className="sum__rule"
             aria-hidden="true"
-            initial={{ scale: 0, rotate: -90 }}
-            whileInView={{ scale: 1, rotate: 0 }}
-            viewport={{ once: true }}
-            transition={{ type: 'spring', stiffness: 260, damping: 16, delay: 0.35 }}
-          >
-            +
-          </motion.span>
-        </div>
+            variants={{ hidden: { scaleX: 0 }, show: { scaleX: 1, transition: { duration: 0.9, ease: [0.76, 0, 0.24, 1] } } }}
+          />
 
-        <div className="equation__result">
-          <motion.span
-            className="equation__op equation__op--eq"
-            aria-hidden="true"
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, ease, delay: 0.1 }}
+          <motion.div
+            className="sum__row sum__row--result"
+            variants={{ hidden: { opacity: 0, y: 36 }, show: { opacity: 1, y: 0, transition: { duration: 0.9, ease } } }}
           >
-            =
-          </motion.span>
-          <Reveal delay={0.15}>
-            <p className="equation__result-text">
-              <span className="sr-only">Comunicação mais gestão: </span>
+            <span className="sum__op" aria-hidden="true">
+              <span className="sum__op-glyph">=</span>
+            </span>
+            <p className="sum__result" aria-hidden="true">
               {education.result}
             </p>
-          </Reveal>
-          <Reveal delay={0.25} className="equation__text">
-            <p>{education.text}</p>
-          </Reveal>
-        </div>
+            <p className="sum__text">{education.text}</p>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   )

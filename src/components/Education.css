@@ -25,140 +25,165 @@
   padding-left: clamp(0rem, 8vw, 9rem);
 }
 
-.equation {
-  position: relative;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: clamp(1rem, 2vw, 2rem);
+/* ==========================================================================
+   Conta armada: [operador] [palavra] [detalhes]
+   ========================================================================== */
+.sum {
+  --op: clamp(52px, 5.4vw, 84px);
   margin-top: clamp(3rem, 6vw, 5.5rem);
 }
-.degree {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: clamp(360px, 46vw, 560px);
-  padding: clamp(1.5rem, 2.6vw, 2.5rem);
+.sum__row {
+  display: grid;
+  grid-template-columns: var(--op) minmax(0, 1.55fr) minmax(0, 1fr);
+  column-gap: clamp(1rem, 2.6vw, 3rem);
+  align-items: center;
+  padding: clamp(1.25rem, 2.4vw, 2.25rem) 0;
+  border-top: 1px solid var(--line);
+}
+.sum__row:first-of-type {
+  border-top: 0;
+}
+
+/* Operadores: mesmo estilo, mesmo eixo */
+.sum__op {
+  display: grid;
+  place-items: center;
+  width: var(--op);
+  height: var(--op);
+}
+.sum__op-glyph {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: var(--signal);
   border: var(--stroke);
-  overflow: hidden;
+  color: var(--ink);
+  font-size: calc(var(--op) * 0.56);
+  font-weight: 300;
+  line-height: 1;
+  padding-bottom: 0.06em;
 }
-.degree--0 {
-  background: var(--blush);
+
+.sum__word {
+  font-size: clamp(2.6rem, 0.4rem + 7.2vw, 9.2rem);
+  font-weight: 830;
+  font-stretch: 62%;
+  line-height: 0.82;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition:
+    color var(--dur) var(--ease-out),
+    -webkit-text-stroke-color var(--dur) var(--ease-out);
 }
-.degree--1 {
-  background: var(--ink);
-  color: var(--paper);
-  box-shadow: 10px 10px 0 var(--signal);
+.sum__word--outline {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--ink);
 }
-.degree__note {
+.sum__row:hover .sum__word--outline {
+  color: var(--ink);
+}
+
+.sum__meta {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    'note note'
+    'degree inst';
+  align-items: end;
+  column-gap: 1.25rem;
+  row-gap: 0.6rem;
+  padding-left: clamp(1rem, 2vw, 2rem);
+  border-left: 1px solid var(--line-strong);
+}
+.sum__note {
+  grid-area: note;
   font-size: var(--fs-micro);
   font-weight: 650;
   letter-spacing: 0.16em;
   text-transform: uppercase;
+  color: var(--gray);
 }
-.degree__word {
-  margin: 1.5rem -0.06em;
-  /* "COMUNICAÇÃO" precisa caber em uma linha na metade do container */
-  font-size: clamp(2.6rem, 0.2rem + 5.6vw, 7.6rem);
-  font-weight: 830;
-  font-stretch: 62%;
-  line-height: 0.85;
-  letter-spacing: -0.035em;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-.degree--1 .degree__word {
-  color: transparent;
-  -webkit-text-stroke: 1.5px var(--paper);
-}
-.degree__meta {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 1.5rem;
-  padding-top: 1.25rem;
-  border-top: 1px solid currentColor;
-}
-.degree__name {
-  max-width: 24ch;
-  font-size: clamp(1.05rem, 0.9rem + 0.5vw, 1.35rem);
+.sum__degree {
+  grid-area: degree;
+  font-size: clamp(1rem, 0.85rem + 0.45vw, 1.25rem);
   font-weight: 650;
   line-height: 1.25;
   letter-spacing: -0.02em;
 }
-.degree__inst {
-  font-size: clamp(2.6rem, 1.6rem + 3vw, 4.6rem);
+.sum__inst {
+  grid-area: inst;
+  font-size: clamp(2.2rem, 1.4rem + 2.4vw, 4rem);
   line-height: 0.85;
   letter-spacing: -0.02em;
 }
-.degree--1 .degree__inst {
-  color: var(--signal);
-}
 
-.equation__op {
-  display: grid;
-  place-items: center;
-  font-weight: 400;
-  line-height: 1;
-  color: var(--ink);
-}
-.equation__op--plus {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: clamp(64px, 7vw, 96px);
-  height: clamp(64px, 7vw, 96px);
-  margin: calc(clamp(64px, 7vw, 96px) / -2) 0 0 calc(clamp(64px, 7vw, 96px) / -2);
-  border-radius: 50%;
-  background: var(--signal);
-  border: var(--stroke);
-  font-size: clamp(2.4rem, 4vw, 3.6rem);
-  font-weight: 300;
-  z-index: 2;
-}
-
-.equation__result {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr) minmax(0, 0.55fr);
-  gap: clamp(1rem, 3vw, 3rem);
-  align-items: center;
-  margin-top: clamp(2.5rem, 5vw, 4.5rem);
-}
-.equation__op--eq {
-  font-size: clamp(4rem, 8vw, 8rem);
-  font-weight: 250;
-  color: var(--signal);
+/* Linha da soma */
+.sum__rule {
+  height: 3px;
+  background: var(--ink);
   transform-origin: left center;
 }
-.equation__result-text {
+
+/* Resultado */
+.sum__row--result {
+  border-top: 0;
+  padding-top: clamp(1.5rem, 3vw, 2.75rem);
+}
+.sum__result {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: clamp(2.2rem, 1rem + 4vw, 5.2rem);
+  font-size: clamp(2.2rem, 0.9rem + 4vw, 5.6rem);
   line-height: 0.98;
   letter-spacing: -0.02em;
   text-wrap: balance;
 }
-.equation__text p {
+.sum__text {
+  padding-left: clamp(1rem, 2vw, 2rem);
+  border-left: 1px solid var(--line-strong);
   font-size: 1rem;
   line-height: 1.55;
   color: var(--gray);
   max-width: 40ch;
 }
 
+/* ---------- Tablet e mobile: detalhes abaixo da palavra ---------- */
 @media (max-width: 900px) {
-  .equation {
-    grid-template-columns: minmax(0, 1fr);
+  .sum {
+    --op: 44px;
   }
-  .degree {
-    min-height: 0;
+  .sum__row {
+    grid-template-columns: var(--op) minmax(0, 1fr);
+    grid-template-areas:
+      'op word'
+      '. meta';
+    row-gap: 1rem;
   }
-  .degree__word {
-    font-size: clamp(2.4rem, 13vw, 6.5rem);
+  .sum__op {
+    grid-area: op;
   }
-  .equation__result {
-    grid-template-columns: auto minmax(0, 1fr);
+  .sum__word,
+  .sum__result {
+    grid-area: word;
   }
-  .equation__text {
-    grid-column: 1 / -1;
+  .sum__meta,
+  .sum__text {
+    grid-area: meta;
+  }
+  .sum__word {
+    font-size: clamp(2.4rem, 13.5vw, 6.5rem);
+  }
+  .sum__result {
+    font-size: clamp(2rem, 9vw, 3.6rem);
+  }
+  .sum__meta,
+  .sum__text {
+    padding-left: 0;
+    border-left: 0;
+  }
+  .sum__op-glyph {
+    border-width: 1.5px;
   }
 }
