@@ -135,8 +135,7 @@ falso.
 4. **Datas de formação (opcional).** O site não exibe anos nem status
    (concluído ou em andamento) de FGV e Wyden, porque não estavam
    documentados.
-5. **Imagem de compartilhamento (og:image).** Precisa da URL final do domínio.
-   Recomendado: 1200×630 com a composição da hero.
+
 
 
 ## Trocar ou adicionar fotos
@@ -149,3 +148,10 @@ falso.
    - `--fig-h`, `--fig-left` e `--y-size`: tamanho da foto, posição e corpo do Y.
    - `--block-top`: topo do bloco e do Y (fração da altura da foto, abaixo
      do queixo).
+
+## Domínio
+
+Domínio oficial: **https://yasminmanasera.com.br** (link canônico, Open Graph,
+`robots.txt` e `sitemap.xml` já apontam para ele). Imagem de compartilhamento:
+`public/og-image.jpg` (1200×630), gerada a partir da hero.
+
