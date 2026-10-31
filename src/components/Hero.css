@@ -85,7 +85,8 @@
   grid-area: body;
   position: relative;
   z-index: 9;
-  padding-bottom: clamp(2rem, 7vh, 5rem);
+  /* espaço extra no desktop mantém o nome acima do bloco vermelho */
+  padding-bottom: clamp(5rem, 15vh, 9.5rem);
 }
 .hero__statement {
   max-width: 25ch;

@@ -33,9 +33,6 @@ export function Thinking() {
 
           <div className="thinking__text-col">
             <Reveal>
-              <p className="lead">{thinking.lead}</p>
-            </Reveal>
-            <Reveal delay={0.1}>
               <p className="thinking__qintro">{thinking.questionsIntro}</p>
             </Reveal>
             <ol className="thinking__questions">

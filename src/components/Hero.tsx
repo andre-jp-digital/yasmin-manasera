@@ -234,9 +234,6 @@ export function Hero() {
         <motion.p className="hero__statement" {...enter(0.15, { y: 24 })}>
           {hero.statementLead} <span className="hero__statement-accent">{hero.statementAccent}</span>
         </motion.p>
-        <motion.p className="hero__desc" {...enter(0.25, { y: 24 })}>
-          {hero.description}
-        </motion.p>
         <motion.div className="hero__ctas" {...enter(0.35, { y: 24 })}>
           <a className="btn btn--primary" href="#trajetoria">
             {hero.ctaPrimary} <Arrow dir="down" />

@@ -49,8 +49,6 @@ export const hero = {
   overline: 'Prazer, eu sou',
   statementLead: 'Conecto estratégia, marketing e vendas para transformar desafios de negócio em',
   statementAccent: 'planos de ação.',
-  description:
-    'Diagnóstico de negócios, estratégia comercial e marketing orientado a resultado — do entendimento do problema ao acompanhamento da execução.',
   ctaPrimary: 'Conhecer a trajetória',
   ctaSecondary: 'Vamos conversar',
 }
@@ -73,9 +71,7 @@ export const thinking = {
   eyebrow: 'Maneira de pensar',
   titleLead: 'Antes de encontrar a resposta, é preciso entender',
   titleAccent: 'a pergunta.',
-  lead:
-    'Minha experiência foi construída em ambientes que exigiam ler cenários, analisar informações, identificar problemas e organizar ações — do varejo à liderança de equipes, das vendas B2B e B2C à gestão de contas, projetos e consultoria.',
-  questionsIntro: 'Por isso, antes de propor uma solução, procuro entender o negócio por inteiro:',
+  questionsIntro: 'Antes de propor uma solução, procuro entender o negócio por inteiro:',
   questions: [
     'O que a empresa vende — e para quem?',
     'Como ela atrai clientes?',

@@ -31,7 +31,7 @@
   color: var(--paper);
 }
 .thinking__qintro {
-  margin-top: 2rem;
+  margin-top: 0;
   color: var(--gray-on-ink);
 }
 .thinking__questions {
