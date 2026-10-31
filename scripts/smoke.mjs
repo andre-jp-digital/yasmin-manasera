@@ -132,7 +132,10 @@ async function newPage(opts = {}) {
   await page.locator('#formacao').scrollIntoViewIfNeeded()
   const before = await page.locator('.eq__result-text').count()
   await page.locator('.eq__cta').click()
-  await wait(3000)
+  await wait(1200)
+  const stepC = (await page.locator('.eq__step-name').count()) ? await page.locator('.eq__step-name').innerText() : ''
+  check('formação: resolução mostra C = Comunicação primeiro', /Comunica/.test(stepC), stepC)
+  await wait(8000)
   const oks = await page.locator('.eq__def.is-ok').count()
   const result = (await page.locator('.eq__result-text').count()) ? await page.locator('.eq__result-text').innerText() : ''
   check('formação: resolver a equação valida C, G, t e revela o resultado', before === 0 && oks === 3 && /marca e negócio/.test(result), `${oks} ok — ${result}`)

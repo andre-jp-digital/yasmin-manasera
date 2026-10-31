@@ -1,4 +1,4 @@
-import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
+import { AnimatePresence, motion } from 'motion/react'
 import { useEffect, useRef, useState } from 'react'
 import { education } from '../content/profile'
 import { useFinePointer } from '../hooks/useMediaQuery'
@@ -33,7 +33,6 @@ function Integral({ draw }: { draw: boolean }) {
 
 export function Education() {
   const fine = useFinePointer()
-  const reduce = useReducedMotion()
   const [focus, setFocus] = useState<Sym | null>(null)
   // passo da resolução: 0 = não resolvida · 1..3 = validando C, G, t · 4 = resolvida
   const [step, setStep] = useState(0)
@@ -44,16 +43,18 @@ export function Education() {
 
   useEffect(() => () => timers.current.forEach(clearTimeout), [])
 
+  // Demonstração passo a passo: C → G → t → R (cada passo fica ~2,6 s na tela)
+  const STEP_MS = 2600
   const solve = () => {
     timers.current.forEach(clearTimeout)
     timers.current = []
     setFocus(null)
-    if (reduce) {
-      setStep(4)
-      return
-    }
     setStep(1)
-    ;[2, 3, 4].forEach((n, i) => timers.current.push(window.setTimeout(() => setStep(n), 650 * (i + 1))))
+    ;[2, 3, 4].forEach((n, i) => timers.current.push(window.setTimeout(() => setStep(n), STEP_MS * (i + 1))))
+  }
+  const skip = () => {
+    timers.current.forEach(clearTimeout)
+    setStep(4)
   }
   const reset = () => {
     timers.current.forEach(clearTimeout)
@@ -135,8 +136,53 @@ export function Education() {
 
             {/* ---------- Resolução: no mesmo lugar onde o olhar está ---------- */}
             <div className="eq__cta-zone" aria-live="polite">
+              {step > 0 && (
+                <ol className="eq__progress" aria-label="Etapas da resolução">
+                  {(['C', 'G', 't', 'R'] as const).map((k, i) => (
+                    <li key={k} className={solved || step > i + 1 ? 'is-done' : step === i + 1 ? 'is-current' : undefined}>
+                      <span className="serif">{k}</span>
+                      {step === i + 1 && i < 3 && (
+                        <motion.i
+                          key={`bar-${step}`}
+                          initial={{ scaleX: 0 }}
+                          animate={{ scaleX: 1 }}
+                          transition={{ duration: STEP_MS / 1000, ease: 'linear' }}
+                        />
+                      )}
+                    </li>
+                  ))}
+                </ol>
+              )}
               <AnimatePresence mode="wait" initial={false}>
-                {solved ? (
+                {solving ? (
+                  <motion.div
+                    key={`step-${step}`}
+                    className="eq__step"
+                    initial={{ opacity: 0, x: 40 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -40, transition: { duration: 0.25 } }}
+                    transition={{ duration: 0.55, ease }}
+                  >
+                    {(() => {
+                      const v = education.variables[step - 1]
+                      return (
+                        <>
+                          <p className="eq__step-head">
+                            <span className="eq__step-sym serif">{v.symbol}</span>
+                            <span className="eq__step-eq">=</span>
+                            <span className="eq__step-name">{v.name}</span>
+                          </p>
+                          <p className="eq__step-kind">{v.kind}</p>
+                          <p className="eq__step-detail">{v.detail}</p>
+                          <p className="eq__step-source serif">{v.source}</p>
+                        </>
+                      )
+                    })()}
+                    <button type="button" className="eq__skip" onClick={skip}>
+                      Pular para o resultado <Arrow size={14} />
+                    </button>
+                  </motion.div>
+                ) : solved ? (
                   <motion.div
                     key="r"
                     className="eq__result-inner"
@@ -145,17 +191,16 @@ export function Education() {
                     exit={{ opacity: 0, y: -12, transition: { duration: 0.25 } }}
                     transition={{ duration: 0.8, ease }}
                   >
+                    <p className="eq__step-head eq__step-head--r">
+                      <span className="eq__step-sym serif">R</span>
+                      <span className="eq__step-eq">=</span>
+                      <span className="eq__step-name">Resultado da prática</span>
+                    </p>
                     <p className="eq__result-line">
                       <span className="eq__therefore" role="img" aria-label="portanto">
                         <i />
                         <i />
                         <i />
-                      </span>
-                      <span className="eq__result-r serif" aria-hidden="true">
-                        R
-                      </span>
-                      <span className="eq__result-eq" aria-hidden="true">
-                        =
                       </span>
                       <span className="eq__result-text">{education.result}</span>
                     </p>
@@ -173,27 +218,16 @@ export function Education() {
                     exit={{ opacity: 0, y: -10, transition: { duration: 0.2 } }}
                     transition={{ duration: 0.5, ease }}
                   >
-                    <button
-                      type="button"
-                      className={`eq__cta${solving ? ' is-solving' : ''}`}
-                      onClick={solve}
-                      disabled={solving}
-                    >
+                    <button type="button" className="eq__cta" onClick={solve}>
                       <span className="eq__cta-chip serif" aria-hidden="true">
                         R = ?
                       </span>
-                      <span className="eq__cta-label">
-                        {solving ? `Calculando ${ORDER[step - 1]}…` : 'Resolver a equação'}
+                      <span className="eq__cta-label">Resolver a equação</span>
+                      <span className="eq__cta-arrow" aria-hidden="true">
+                        <Arrow size={20} />
                       </span>
-                      {!solving && (
-                        <span className="eq__cta-arrow" aria-hidden="true">
-                          <Arrow size={20} />
-                        </span>
-                      )}
                     </button>
-                    <p className="eq__cta-hint">
-                      {solving ? 'Validando cada variável da fórmula' : 'Descubra o valor de R'}
-                    </p>
+                    <p className="eq__cta-hint">Descubra o valor de R, variável por variável</p>
                   </motion.div>
                 )}
               </AnimatePresence>
