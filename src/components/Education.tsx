@@ -98,9 +98,11 @@ export function Education() {
 
           {/* ---------- Equação ---------- */}
           <div className="eq__paper">
+            <div className="eq__row">
             <div className="eq__line">
               <span className={`eq__r${solved ? ' is-ok' : ''}`} aria-hidden="true">
                 R
+                {!solved && <span className="eq__r-q">?</span>}
               </span>
               <span className="eq__op" aria-hidden="true">
                 =
@@ -129,6 +131,73 @@ export function Education() {
             <span className="eq__num" aria-hidden="true">
               (1)
             </span>
+            </div>
+
+            {/* ---------- Resolução: no mesmo lugar onde o olhar está ---------- */}
+            <div className="eq__cta-zone" aria-live="polite">
+              <AnimatePresence mode="wait" initial={false}>
+                {solved ? (
+                  <motion.div
+                    key="r"
+                    className="eq__result-inner"
+                    initial={{ opacity: 0, y: 24 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -12, transition: { duration: 0.25 } }}
+                    transition={{ duration: 0.8, ease }}
+                  >
+                    <p className="eq__result-line">
+                      <span className="eq__therefore" role="img" aria-label="portanto">
+                        <i />
+                        <i />
+                        <i />
+                      </span>
+                      <span className="eq__result-r serif" aria-hidden="true">
+                        R
+                      </span>
+                      <span className="eq__result-eq" aria-hidden="true">
+                        =
+                      </span>
+                      <span className="eq__result-text">{education.result}</span>
+                    </p>
+                    <p className="eq__result-sub">{education.text}</p>
+                    <button type="button" className="eq__redo" onClick={reset}>
+                      Refazer o cálculo <Arrow dir="up" size={16} />
+                    </button>
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="cta"
+                    className="eq__cta-wrap"
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10, transition: { duration: 0.2 } }}
+                    transition={{ duration: 0.5, ease }}
+                  >
+                    <button
+                      type="button"
+                      className={`eq__cta${solving ? ' is-solving' : ''}`}
+                      onClick={solve}
+                      disabled={solving}
+                    >
+                      <span className="eq__cta-chip serif" aria-hidden="true">
+                        R = ?
+                      </span>
+                      <span className="eq__cta-label">
+                        {solving ? `Calculando ${ORDER[step - 1]}…` : 'Resolver a equação'}
+                      </span>
+                      {!solving && (
+                        <span className="eq__cta-arrow" aria-hidden="true">
+                          <Arrow size={20} />
+                        </span>
+                      )}
+                    </button>
+                    <p className="eq__cta-hint">
+                      {solving ? 'Validando cada variável da fórmula' : 'Descubra o valor de R'}
+                    </p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           </div>
 
           {/* ---------- Legenda ("onde:") ---------- */}
@@ -174,59 +243,6 @@ export function Education() {
             </p>
           </div>
 
-          {/* ---------- Resolução ---------- */}
-          <div className="eq__solve">
-            <button
-              type="button"
-              className={`btn ${solved ? 'btn--ghost' : 'btn--primary'} eq__btn`}
-              onClick={solved ? reset : solve}
-              disabled={solving}
-            >
-              {solved ? 'Refazer o cálculo' : solving ? 'Calculando…' : 'Resolver a equação'}
-              {!solving && <Arrow dir={solved ? 'up' : 'right'} />}
-            </button>
-
-            <div className="eq__result" aria-live="polite">
-              <AnimatePresence mode="wait" initial={false}>
-                {solved ? (
-                  <motion.div
-                    key="r"
-                    className="eq__result-inner"
-                    initial={{ opacity: 0, y: 28 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -12, transition: { duration: 0.25 } }}
-                    transition={{ duration: 0.8, ease }}
-                  >
-                    <p className="eq__result-line">
-                      <span className="eq__therefore" role="img" aria-label="portanto">
-                        <i />
-                        <i />
-                        <i />
-                      </span>
-                      <span className="eq__result-r serif" aria-hidden="true">
-                        R
-                      </span>
-                      <span className="eq__result-eq" aria-hidden="true">
-                        =
-                      </span>
-                      <span className="eq__result-text">{education.result}</span>
-                    </p>
-                    <p className="eq__result-sub">{education.text}</p>
-                  </motion.div>
-                ) : (
-                  <motion.p
-                    key="q"
-                    className="eq__pending"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0, transition: { duration: 0.2 } }}
-                  >
-                    <span className="serif">R</span> = ?
-                  </motion.p>
-                )}
-              </AnimatePresence>
-            </div>
-          </div>
         </motion.div>
       </div>
     </section>

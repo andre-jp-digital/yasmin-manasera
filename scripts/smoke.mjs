@@ -131,12 +131,12 @@ async function newPage(opts = {}) {
   // Formação: resolver a equação revela o resultado
   await page.locator('#formacao').scrollIntoViewIfNeeded()
   const before = await page.locator('.eq__result-text').count()
-  await page.locator('.eq__btn').click()
+  await page.locator('.eq__cta').click()
   await wait(3000)
   const oks = await page.locator('.eq__def.is-ok').count()
   const result = (await page.locator('.eq__result-text').count()) ? await page.locator('.eq__result-text').innerText() : ''
   check('formação: resolver a equação valida C, G, t e revela o resultado', before === 0 && oks === 3 && /marca e negócio/.test(result), `${oks} ok — ${result}`)
-  await page.locator('.eq__btn').click()
+  await page.locator('.eq__redo').click()
   await wait(600)
   check('formação: refazer o cálculo volta ao estado inicial', (await page.locator('.eq__result-text').count()) === 0)
 
