@@ -10,7 +10,7 @@
 }
 .education__title {
   margin-top: 2rem;
-  max-width: 16ch;
+  max-width: 18ch;
 }
 
 /* ==========================================================================
@@ -227,6 +227,31 @@
   font-size: clamp(1.6rem, 1.2rem + 1vw, 2.3rem);
   line-height: 1;
 }
+/* nota do diferencial (dt) */
+.eq__dt {
+  grid-column: 2;
+  display: flex;
+  align-items: baseline;
+  gap: 0.55rem;
+  margin-top: -0.25rem;
+  padding: 0.75rem 0.25rem;
+  border-top: 1px dashed var(--line-strong);
+  font-size: 0.95rem;
+  color: var(--gray);
+  transition: background-color 300ms var(--ease-out);
+}
+.eq__dt.is-lit {
+  background: rgba(243, 198, 179, 0.35);
+}
+.eq__dt-sym {
+  font-size: 1.7rem;
+  line-height: 0.9;
+  color: var(--ink);
+}
+.eq__dt-sym i {
+  font-style: italic;
+}
+
 /* check desenhado em CSS */
 .eq__check {
   position: absolute;
@@ -370,5 +395,9 @@
   }
   .eq__where-label {
     padding-top: 0;
+  }
+  .eq__dt {
+    grid-column: 1;
+    margin-top: 0;
   }
 }

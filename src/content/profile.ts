@@ -193,10 +193,10 @@ export const career = {
 
 export const education = {
   eyebrow: 'Formação',
-  title: 'A formação pensada em um cálculo.',
+  title: 'A formação acadêmica pensada em um cálculo.',
   /** Leitura da equação para leitores de tela */
   equationSpoken:
-    'R é igual à integral, de 2015 a 2026, de C vezes G, d t. Onde C é comunicação, G é gestão e t é o tempo de prática.',
+    'R é igual à integral, de 2015 a 2026, de C vezes G, d t. Onde C é comunicação, G é gestão, t é o tempo de prática e d t é cada instante de prática, somado ao longo do tempo.',
   limits: { from: '2015', to: '2026' },
   variables: [
     {
@@ -221,6 +221,8 @@ export const education = {
       kind: 'Tempo',
     },
   ],
+  /** Nota sobre o diferencial da integral */
+  dtNote: 'cada instante de prática, somado ao longo do tempo — de 2015 a 2026.',
   result: 'marca e negócio na mesma conversa.',
   text: 'A publicidade ensina a falar com pessoas. A gestão ensina a responder ao negócio. Multiplicadas — e não apenas somadas — ao longo de anos de prática, resultam em estratégia que comunica e que entrega.',
 }

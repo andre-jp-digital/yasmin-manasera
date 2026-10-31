@@ -86,7 +86,7 @@ export function Education() {
       <div className="container">
         <div className="education__head">
           <Eyebrow index="03" label={education.eyebrow} />
-          <RevealWords id="formacao-title" text={education.title} className="h2 education__title" accentFrom={4} />
+          <RevealWords id="formacao-title" text={education.title} className="h2 education__title" accentFrom={5} />
         </div>
 
         <motion.div
@@ -160,6 +160,18 @@ export function Education() {
                 )
               })}
             </dl>
+            <p className={`eq__dt${isLit('t') ? ' is-lit' : ''}`}>
+              <span className="eq__dt-sym serif" aria-hidden="true">
+                d<i>t</i>
+              </span>
+              <span className="eq__def-eq" aria-hidden="true">
+                =
+              </span>
+              <span>
+                <span className="sr-only">d t: </span>
+                {education.dtNote}
+              </span>
+            </p>
           </div>
 
           {/* ---------- Resolução ---------- */}
