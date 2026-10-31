@@ -49,7 +49,7 @@ src/
   components/
     Intro.tsx            ← abertura "Prazer"
     Hero.tsx             ← composição Y + foto + M
-    Ticker / Thinking / Career / Contribution / Education / Travel / Contact
+    Ticker / Thinking / Career / Education / Travel / Contact
     Header / SideRail    ← navegação (header temático + trilho lateral)
     ui/Reveal.tsx        ← revelações por máscara (palavras, linhas)
 src/assets/images/yasmin/← imagens web geradas (importadas em profile.ts)
@@ -76,9 +76,8 @@ Para editar textos, mexa só em `src/content/profile.ts`.
   entre as iniciais. Regra de composição: nenhum elemento gráfico envolve ou
   toca a cabeça. Tudo é posicionado em coordenadas da própria foto (`.fig`).
 - **Ritmo das seções:** papel → faixa-letreiro → tinta (pensamento) → papel
-  com capítulos editoriais e uma faixa blush → branco com painéis-cartaz →
-  papel com a "equação" da formação → colagem de viagem → vermelho (contato)
-  → tinta (rodapé).
+  com capítulos editoriais e uma faixa blush → branco com a "equação" da
+  formação → colagem de viagem → vermelho (contato) → tinta (rodapé).
 
 ## Interações e movimento
 
@@ -96,8 +95,6 @@ Para editar textos, mexa só em `src/content/profile.ts`.
 - **Pensamento:** quatro verbos interativos (hover, clique, foco ou toque). No
   desktop há um painel lateral de leitura. No mobile, o texto aparece abaixo
   do verbo.
-- **Atuação:** no desktop, os painéis se expandem por hover, clique ou foco.
-  No mobile, todos ficam abertos.
 - **Outros:** títulos revelados por máscara, header que muda de tema conforme
   a seção, trilho lateral com a seção atual e o progresso, polaroids com
   parallax discreto que ganham cor no hover, e "copiar e-mail".

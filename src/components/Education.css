@@ -1,5 +1,6 @@
 .education {
-  background: var(--paper);
+  background: var(--white);
+  border-top: 1px solid var(--line);
   overflow: hidden;
 }
 .education__head {

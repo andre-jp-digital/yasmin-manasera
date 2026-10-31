@@ -1,7 +1,6 @@
 import { MotionConfig } from 'motion/react'
 import { Career } from './components/Career'
 import { Contact } from './components/Contact'
-import { Contribution } from './components/Contribution'
 import { Education } from './components/Education'
 import { Header } from './components/Header'
 import { Hero } from './components/Hero'
@@ -36,7 +35,6 @@ function Site() {
         <Ticker />
         <Thinking />
         <Career />
-        <Contribution />
         <Education />
         <Travel />
         <Contact />

@@ -26,7 +26,7 @@ export function Contact() {
     <>
       <section id="contato" className="section contact" data-theme="signal" aria-labelledby="contato-title">
         <div className="container">
-          <Eyebrow index="06" label={closing.eyebrow} />
+          <Eyebrow index="05" label={closing.eyebrow} />
           <MaskLines
             id="contato-title"
             className="contact__title"

@@ -29,9 +29,8 @@ export const contact = {
 export const nav = [
   { id: 'pensamento', label: 'Pensamento', index: '01' },
   { id: 'trajetoria', label: 'Trajetória', index: '02' },
-  { id: 'atuacao', label: 'Atuação', index: '03' },
-  { id: 'formacao', label: 'Formação', index: '04' },
-  { id: 'contato', label: 'Contato', index: '06' },
+  { id: 'formacao', label: 'Formação', index: '03' },
+  { id: 'contato', label: 'Contato', index: '05' },
 ] as const
 
 /** Todas as seções (usado pelo índice lateral). */
@@ -39,10 +38,9 @@ export const sections = [
   { id: 'inicio', label: 'Prazer', index: '00' },
   { id: 'pensamento', label: 'Pensamento', index: '01' },
   { id: 'trajetoria', label: 'Trajetória', index: '02' },
-  { id: 'atuacao', label: 'Atuação', index: '03' },
-  { id: 'formacao', label: 'Formação', index: '04' },
-  { id: 'fora-do-roteiro', label: 'Fora do roteiro', index: '05' },
-  { id: 'contato', label: 'Contato', index: '06' },
+  { id: 'formacao', label: 'Formação', index: '03' },
+  { id: 'fora-do-roteiro', label: 'Fora do roteiro', index: '04' },
+  { id: 'contato', label: 'Contato', index: '05' },
 ] as const
 
 export const hero = {
@@ -191,39 +189,6 @@ export const career = {
     accent: 'a consultoria aproveita.',
     text: 'Metas, indicadores, equipes e cliente deixaram de ser teoria muito antes de virarem estratégia.',
   },
-}
-
-export const contribution = {
-  eyebrow: 'Como posso contribuir',
-  title: 'Entender o negócio muda a maneira de construir a estratégia.',
-  intro:
-    'Quatro frentes que se conectam — porque o problema de um negócio raramente respeita a fronteira entre áreas.',
-  areas: [
-    {
-      title: 'Diagnóstico de negócios',
-      short: 'Diagnóstico',
-      text: 'Análise de marketing, vendas, operação e retenção para identificar gargalos, causas de problemas e oportunidades.',
-      keywords: ['Marketing', 'Vendas', 'Operação', 'Retenção', 'Auditorias'],
-    },
-    {
-      title: 'Estratégia de marketing e comunicação',
-      short: 'Marketing',
-      text: 'Estruturação de estratégias de comunicação e campanhas, considerando os objetivos e desafios de cada negócio.',
-      keywords: ['Estratégia de comunicação', 'Campanhas', 'Objetivos de negócio'],
-    },
-    {
-      title: 'Estratégia comercial',
-      short: 'Comercial',
-      text: 'Vendas B2B e B2C, vendas consultivas, qualificação de oportunidades, negociação, gestão de pipeline e acompanhamento de indicadores.',
-      keywords: ['Vendas B2B e B2C', 'Venda consultiva', 'Qualificação', 'Negociação', 'Pipeline', 'Indicadores'],
-    },
-    {
-      title: 'Gestão de projetos e execução',
-      short: 'Execução',
-      text: 'Organização de prioridades, coordenação de diferentes especialidades, gestão de contas e acompanhamento das iniciativas definidas.',
-      keywords: ['Prioridades', 'Coordenação multidisciplinar', 'Gestão de contas', 'Acompanhamento'],
-    },
-  ],
 }
 
 export const education = {

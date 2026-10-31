@@ -23,7 +23,7 @@ export function Travel() {
     >
       <div className="container travel__grid">
         <div className="travel__text">
-          <Eyebrow index="05" label={travel.eyebrow} />
+          <Eyebrow index="04" label={travel.eyebrow} />
           <RevealWords id="viagens-title" text={travel.title} className="h2 travel__title" accentFrom={3} />
           <Reveal delay={0.1}>
             <p className="lead travel__lead">{travel.text}</p>

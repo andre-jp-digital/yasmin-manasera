@@ -12,7 +12,7 @@ export function Education() {
     <section id="formacao" className="section education" data-theme="light" aria-labelledby="formacao-title">
       <div className="container">
         <div className="education__head">
-          <Eyebrow index="04" label={education.eyebrow} />
+          <Eyebrow index="03" label={education.eyebrow} />
           <MaskLines
             id="formacao-title"
             className="h2 education__title"

@@ -119,7 +119,7 @@ async function newPage(opts = {}) {
   check('âncoras internas apontam para seções existentes', data.navTargetsOk)
   for (const t of ['V4 Company', 'Gestora de Projetos', 'B2B e B2C', 'out. 2026', 'تشرفت بمعرفتك', 'Grupo Maxma Modas', 'Gerente de Vendas', 'MBA em Gestão Empresarial', 'FGV', 'Wyden', 'Publicidade e Propaganda'])
     check(`conteúdo: "${t}"`, data.text.toLowerCase().includes(t.toLowerCase()))
-  check('ordem das seções', data.sectionIds.join(',') === 'inicio,pensamento,trajetoria,atuacao,formacao,fora-do-roteiro,contato', data.sectionIds.join(','))
+  check('ordem das seções', data.sectionIds.join(',') === 'inicio,pensamento,trajetoria,formacao,fora-do-roteiro,contato', data.sectionIds.join(','))
 
   // Verbos: clique troca o painel
   await page.locator('#pensamento').scrollIntoViewIfNeeded()
@@ -127,12 +127,6 @@ async function newPage(opts = {}) {
   await wait(500)
   const readout = await page.locator('.verbs__readout-word').innerText()
   check('verbo interativo por clique', /estruturar/i.test(readout), readout)
-
-  // Atuação: painel expande por clique/foco
-  await page.locator('#atuacao').scrollIntoViewIfNeeded()
-  await page.locator('.area__toggle').nth(3).click()
-  await wait(300)
-  check('painel de atuação expande', (await page.locator('.area--3.is-active').count()) === 1)
 
   // Rever a apresentação
   await page.locator('.footer__actions button').click()

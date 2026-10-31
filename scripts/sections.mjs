@@ -6,7 +6,7 @@ const { chromium } = require('playwright')
 const URL = process.env.URL ?? 'http://localhost:4173/'
 mkdirSync('screenshots', { recursive: true })
 const sizes = (process.argv.slice(2).length ? process.argv.slice(2) : ['1440,900']).map((s) => s.split(',').map(Number))
-const ids = ['pensamento', 'trajetoria', 'atuacao', 'formacao', 'fora-do-roteiro', 'contato']
+const ids = ['pensamento', 'trajetoria', 'formacao', 'fora-do-roteiro', 'contato']
 const b = await chromium.launch()
 const errors = []
 for (const [width, height] of sizes) {
