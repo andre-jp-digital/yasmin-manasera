@@ -53,7 +53,6 @@ export const hero = {
     'Diagnóstico de negócios, estratégia comercial e marketing orientado a resultado — do entendimento do problema ao acompanhamento da execução.',
   ctaPrimary: 'Conhecer a trajetória',
   ctaSecondary: 'Vamos conversar',
-  tags: ['MBA · FGV'],
 }
 
 export const ticker = [
@@ -153,7 +152,7 @@ export const career = {
       yearsStart: '2022',
       yearsEnd: '2026',
       company: 'V4 Company',
-      role: 'Account Manager',
+      role: 'Gestora de Projetos',
       period: 'ago. 2022 — out. 2026',
       progression: ['Gestão estratégica de contas e projetos', 'Consultoria e diagnóstico de negócios'],
       summary:
