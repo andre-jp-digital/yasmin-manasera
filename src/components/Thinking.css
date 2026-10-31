@@ -30,12 +30,8 @@
 .thinking__text-col .lead {
   color: var(--paper);
 }
-.thinking__qintro {
-  margin-top: 0;
-  color: var(--gray-on-ink);
-}
 .thinking__questions {
-  margin-top: 1.25rem;
+  margin-top: 0;
   border-bottom: 1px solid var(--line-on-ink);
 }
 .thinking__questions li {

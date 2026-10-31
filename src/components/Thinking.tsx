@@ -32,9 +32,6 @@ export function Thinking() {
           </div>
 
           <div className="thinking__text-col">
-            <Reveal>
-              <p className="thinking__qintro">{thinking.questionsIntro}</p>
-            </Reveal>
             <ol className="thinking__questions">
               {thinking.questions.map((q, i) => (
                 <motion.li

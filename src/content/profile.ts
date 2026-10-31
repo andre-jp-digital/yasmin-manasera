@@ -70,8 +70,7 @@ export const ticker: { text: string; flicker?: boolean; flaw?: number }[] = [
 export const thinking = {
   eyebrow: 'Maneira de pensar',
   titleLead: 'Antes de encontrar a resposta, é preciso entender',
-  titleAccent: 'a pergunta.',
-  questionsIntro: 'Antes de propor uma solução, procuro entender o negócio por inteiro:',
+  titleAccent: 'as perguntas.',
   questions: [
     'O que a empresa vende — e para quem?',
     'Como ela atrai clientes?',
