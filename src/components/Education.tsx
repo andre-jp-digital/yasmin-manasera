@@ -45,10 +45,27 @@ export function Education() {
 
   // Demonstração passo a passo: C → G → t → R (cada passo fica ~2,6 s na tela)
   const STEP_MS = 2600
+  const paperRef = useRef<HTMLDivElement>(null)
+
+  /** Enquadra o quadro da equação logo abaixo do header, se ele não estiver
+   *  inteiro na tela (no celular, o botão costuma estar no fim da tela e os
+   *  passos apareceriam abaixo da dobra). */
+  const frameEquation = () => {
+    const el = paperRef.current
+    if (!el) return
+    const header = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 72
+    const r = el.getBoundingClientRect()
+    const fits = r.top >= header && r.top + Math.min(r.height + 260, window.innerHeight) <= window.innerHeight
+    if (fits) return
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    window.scrollTo({ top: r.top + window.scrollY - header - 8, behavior: reduceMotion ? 'auto' : 'smooth' })
+  }
+
   const solve = () => {
     timers.current.forEach(clearTimeout)
     timers.current = []
     setFocus(null)
+    frameEquation()
     setStep(1)
     ;[2, 3, 4].forEach((n, i) => timers.current.push(window.setTimeout(() => setStep(n), STEP_MS * (i + 1))))
   }
@@ -98,7 +115,7 @@ export function Education() {
           <p className="sr-only">{education.equationSpoken}</p>
 
           {/* ---------- Equação ---------- */}
-          <div className="eq__paper">
+          <div className="eq__paper" ref={paperRef}>
             <div className="eq__row">
             <div className="eq__line">
               <span className={`eq__r${solved ? ' is-ok' : ''}`} aria-hidden="true">

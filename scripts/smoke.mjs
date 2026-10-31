@@ -143,6 +143,21 @@ async function newPage(opts = {}) {
   await wait(600)
   check('formação: refazer o cálculo volta ao estado inicial', (await page.locator('.eq__result-text').count()) === 0)
 
+  // Formação (mobile): ao tocar em "Resolver" com o botão no rodapé da tela, a equação é enquadrada
+  {
+    const mctx = await browser.newContext({ viewport: { width: 375, height: 667 }, isMobile: true, hasTouch: true })
+    await mctx.addInitScript(() => sessionStorage.setItem('ym:intro-seen', '1'))
+    const mp = await mctx.newPage()
+    await mp.goto(URL, { waitUntil: 'networkidle' })
+    await mp.evaluate(() => { const el = document.querySelector('.eq__cta'); const r = el.getBoundingClientRect(); window.scrollTo({ top: r.top + scrollY - innerHeight + r.height + 30, behavior: 'instant' }) })
+    await wait(600)
+    await mp.locator('.eq__cta').tap()
+    await wait(1500)
+    const vis = await mp.evaluate(() => { const l = document.querySelector('.eq__line').getBoundingClientRect(); const st = document.querySelector('.eq__step')?.getBoundingClientRect(); return l.top >= 0 && !!st && st.bottom <= innerHeight })
+    check('formação (mobile): fórmula e passo visíveis juntos após tocar em Resolver', vis)
+    await mctx.close()
+  }
+
   // Rever a apresentação
   await page.locator('.footer__actions button').click()
   await wait(300)

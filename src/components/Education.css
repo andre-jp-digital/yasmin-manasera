@@ -657,6 +657,39 @@
   }
 }
 
+/* Mobile: passos compactos para caber na tela junto com a fórmula */
+@media (max-width: 640px) {
+  .eq__cta-zone {
+    margin-top: 1.75rem;
+  }
+  .eq__progress {
+    margin-bottom: 1rem;
+  }
+  .eq__progress li {
+    width: 52px;
+    height: 30px;
+  }
+  .eq__step-head {
+    font-size: clamp(2rem, 10vw, 2.6rem);
+  }
+  .eq__step-kind {
+    margin-top: 0.75rem;
+  }
+  .eq__step-detail {
+    font-size: 1rem;
+  }
+  .eq__step-source {
+    font-size: 2rem;
+  }
+  .eq__skip {
+    margin-top: 0.5rem;
+  }
+  .eq__step-head--r {
+    font-size: 1.45rem;
+    margin-bottom: 0.75rem;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .eq__r-q,
   .eq__cta::after {
