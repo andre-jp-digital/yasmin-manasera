@@ -128,18 +128,17 @@ async function newPage(opts = {}) {
   const readout = await page.locator('.verbs__readout-word').innerText()
   check('verbo interativo por clique', /estruturar/i.test(readout), readout)
 
-  // Formação: somar os dois círculos revela o resultado
+  // Formação: resolver a equação revela o resultado
   await page.locator('#formacao').scrollIntoViewIfNeeded()
-  const before = await page.locator('.venn__result-text').count()
-  await page.locator('.venn__circle').nth(0).click()
-  await page.locator('.venn__circle').nth(1).click()
-  await wait(1200)
-  const pressed = await page.locator('.venn__circle[aria-pressed="true"]').count()
-  const result = (await page.locator('.venn__result-text').count()) ? await page.locator('.venn__result-text').innerText() : ''
-  check('formação: clicar nos dois círculos revela o resultado', before === 0 && pressed === 2 && /marca e negócio/.test(result), result)
-  await page.locator('.venn__circle').nth(1).click()
-  await wait(800)
-  check('formação: desfazer esconde o resultado', (await page.locator('.venn__result-text').count()) === 0)
+  const before = await page.locator('.eq__result-text').count()
+  await page.locator('.eq__btn').click()
+  await wait(3000)
+  const oks = await page.locator('.eq__def.is-ok').count()
+  const result = (await page.locator('.eq__result-text').count()) ? await page.locator('.eq__result-text').innerText() : ''
+  check('formação: resolver a equação valida C, G, t e revela o resultado', before === 0 && oks === 3 && /marca e negócio/.test(result), `${oks} ok — ${result}`)
+  await page.locator('.eq__btn').click()
+  await wait(600)
+  check('formação: refazer o cálculo volta ao estado inicial', (await page.locator('.eq__result-text').count()) === 0)
 
   // Rever a apresentação
   await page.locator('.footer__actions button').click()

@@ -193,24 +193,36 @@ export const career = {
 
 export const education = {
   eyebrow: 'Formação',
-  titleLead: 'A linguagem da comunicação.',
-  titleAccent: 'A lógica da gestão.',
-  items: [
+  title: 'A formação pensada em um cálculo.',
+  /** Leitura da equação para leitores de tela */
+  equationSpoken:
+    'R é igual à integral, de 2015 a 2026, de C vezes G, d t. Onde C é comunicação, G é gestão e t é o tempo de prática.',
+  limits: { from: '2015', to: '2026' },
+  variables: [
     {
-      word: 'Comunicação',
-      degree: 'Comunicação Social — Publicidade e Propaganda',
-      institution: 'Wyden',
-      note: 'Graduação',
+      symbol: 'C',
+      name: 'Comunicação',
+      detail: 'Comunicação Social — Publicidade e Propaganda',
+      source: 'Wyden',
+      kind: 'Graduação',
     },
     {
-      word: 'Gestão',
-      degree: 'MBA em Gestão Empresarial',
-      institution: 'FGV',
-      note: 'MBA',
+      symbol: 'G',
+      name: 'Gestão',
+      detail: 'MBA em Gestão Empresarial',
+      source: 'FGV',
+      kind: 'MBA',
+    },
+    {
+      symbol: 't',
+      name: 'Prática',
+      detail: 'Vendas, liderança de equipes, gestão de contas, projetos e consultoria',
+      source: '2015 — 2026',
+      kind: 'Tempo',
     },
   ],
   result: 'marca e negócio na mesma conversa.',
-  text: 'A formação em publicidade ensina a falar com pessoas. A gestão ensina a responder ao negócio. A prática comercial ensinou que as duas coisas precisam acontecer ao mesmo tempo.',
+  text: 'A publicidade ensina a falar com pessoas. A gestão ensina a responder ao negócio. Multiplicadas — e não apenas somadas — ao longo de anos de prática, resultam em estratégia que comunica e que entrega.',
 }
 
 /**
