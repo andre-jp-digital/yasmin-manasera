@@ -55,14 +55,16 @@ export const hero = {
 
 /**
  * Letreiro estático (efeito de neon/LED com falha).
- * `flaw`: índice da letra com "mau contato" (pisca mais que as outras).
+ * Só alguns termos falham — o resto fica aceso e estável.
+ * `flicker`: o termo inteiro pisca de vez em quando.
+ * `flaw`: índice de uma única letra com "mau contato".
  */
-export const ticker: { text: string; flaw?: number }[] = [
+export const ticker: { text: string; flicker?: boolean; flaw?: number }[] = [
   { text: 'Diagnóstico de negócios' },
-  { text: 'Estratégia de marketing', flaw: 14 },
-  { text: 'Estratégia comercial' },
-  { text: 'Gestão de projetos', flaw: 12 },
-  { text: 'Vendas B2B e B2C' },
+  { text: 'Estratégias de marketing' },
+  { text: 'Branding', flicker: true },
+  { text: 'Copywriting', flaw: 4 },
+  { text: 'Gestão de Projetos' },
 ]
 
 export const thinking = {

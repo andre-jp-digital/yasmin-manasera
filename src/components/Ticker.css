@@ -66,9 +66,13 @@
 
 /* ligando: cada termo acende com um tremor, um após o outro */
 .sign.is-on .sign__text {
+  animation: sign-power 0.9s steps(1, end) calc(var(--i) * 0.22s) both;
+}
+/* só os termos marcados falham depois de acesos */
+.sign.is-on .sign__item--flicker .sign__text {
   animation:
     sign-power 0.9s steps(1, end) calc(var(--i) * 0.22s) both,
-    sign-flicker var(--dur) linear var(--delay) infinite;
+    sign-flicker 7s linear var(--delay) infinite;
 }
 .sign.is-on .sign__sep {
   opacity: 1;

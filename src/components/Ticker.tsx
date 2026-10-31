@@ -4,9 +4,9 @@ import './Ticker.css'
 
 /**
  * Letreiro estático com efeito de neon/LED falhando.
- * Os termos acendem um a um quando a faixa entra na tela e, depois,
- * piscam de forma irregular (cada um no seu ritmo). Uma letra de alguns
- * termos tem "mau contato". Sem animação com prefers-reduced-motion.
+ * Os termos acendem um a um quando a faixa entra na tela. Depois, só
+ * alguns falham: um termo pisca de vez em quando e uma letra tem "mau
+ * contato". Sem animação com prefers-reduced-motion.
  */
 export function Ticker() {
   const ref = useRef<HTMLDivElement>(null)
@@ -34,13 +34,11 @@ export function Ticker() {
         {ticker.map((item, i) => (
           <li
             key={item.text}
-            className={`sign__item${i % 2 ? ' sign__item--serif' : ''}`}
+            className={`sign__item${i % 2 ? ' sign__item--serif' : ''}${item.flicker ? ' sign__item--flicker' : ''}`}
             style={
               {
                 '--i': i,
-                // ritmos diferentes para cada termo (6s a 11s) e defasagem
-                '--dur': `${6 + ((i * 7) % 5) * 1.2}s`,
-                '--delay': `${1.6 + i * 0.9}s`,
+                '--delay': `${2.2 + i * 0.6}s`,
               } as React.CSSProperties
             }
           >

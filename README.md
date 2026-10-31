@@ -94,7 +94,8 @@ Para editar textos, mexa só em `src/content/profile.ts`.
   redução de movimento). A foto fica parada.
 - **Letreiro (faixa escura abaixo da hero):** estático, com efeito de
   neon/LED falhando. Os termos acendem em sequência ao entrar na tela e
-  piscam de forma irregular, com uma letra "com mau contato". As piscadas
+  só alguns falham: "Branding" pisca de vez em quando e o "w" de
+  "Copywriting" tem "mau contato". As piscadas
   são quedas de brilho, abaixo de 3 por segundo. Com movimento reduzido,
   fica tudo aceso.
 - **Pensamento:** quatro verbos interativos (hover, clique, foco ou toque). No
